@@ -1,4 +1,7 @@
+"use client"
+import { useState } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -11,8 +14,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Progress } from "@/components/ui/progress"
-import { Code, Cpu, Target, Trophy, Brain, ChevronRight, LogOut, Settings, User } from "lucide-react"
+import { Code, Cpu, Target, Trophy, Brain, ChevronRight, LogOut, Settings, User, Mail, Sparkles } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { ActiveUser, clearActiveUser, getActiveUser } from "@/lib/profile-storage"
 
 const categories = [
   {
@@ -73,7 +77,28 @@ const recentScores = [
   { category: "ECE", quiz: "Digital Circuits", score: 78, total: 100, date: "5 days ago" },
 ]
 
+const profileFields = ["role", "branch", "yearClass", "section", "about"] as const
+
 export default function DashboardPage() {
+  const router = useRouter()
+  const [user] = useState<ActiveUser | null>(() => getActiveUser())
+
+  const initials = user?.name
+    ? user.name
+        .split(" ")
+        .slice(0, 2)
+        .map((part) => part[0])
+        .join("")
+        .toUpperCase()
+    : "QE"
+
+  const welcomeCopy = user?.name ? `Welcome back, ${user.name.split(" ")[0]}!` : "Welcome back, John!"
+
+  const handleLogout = () => {
+    clearActiveUser()
+    router.push("/login")
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -93,15 +118,15 @@ export default function DashboardPage() {
                 <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                   <Avatar>
                     <AvatarImage src="/placeholder.svg?height=40&width=40" alt="User" />
-                    <AvatarFallback className="bg-accent text-accent-foreground">JD</AvatarFallback>
+                    <AvatarFallback className="bg-accent text-accent-foreground">{initials}</AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56" align="end">
                 <DropdownMenuLabel>
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">John Doe</p>
-                    <p className="text-xs leading-none text-muted-foreground">john@example.com</p>
+                    <p className="text-sm font-medium leading-none">{user?.name ?? "Guest User"}</p>
+                    <p className="text-xs leading-none text-muted-foreground">{user?.email ?? "Not signed in"}</p>
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
@@ -114,7 +139,7 @@ export default function DashboardPage() {
                   <span>Settings</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onSelect={handleLogout}>
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Log out</span>
                 </DropdownMenuItem>
@@ -127,8 +152,12 @@ export default function DashboardPage() {
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Welcome back, John!</h1>
-          <p className="text-muted-foreground">Continue your learning journey and track your progress</p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">{welcomeCopy}</h1>
+          <p className="text-muted-foreground">
+            {user?.role
+              ? `You're logged in as ${user.role}. Continue your learning journey and track your progress.`
+              : "Continue your learning journey and track your progress."}
+          </p>
         </div>
 
         {/* Stats Cards */}
@@ -208,6 +237,58 @@ export default function DashboardPage() {
 
           {/* Recent Scores Sidebar */}
           <div className="space-y-6">
+            <Card className="shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl">
+                  <Sparkles className="w-4 h-4 text-accent" />
+                  Profile Overview
+                </CardTitle>
+                <CardDescription>Personal snapshot based on your signup</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {user ? (
+                  <>
+                    <div className="flex items-center gap-3 rounded-lg border border-border/60 p-3">
+                      <Avatar className="h-12 w-12">
+                        <AvatarFallback className="bg-secondary text-secondary-foreground text-lg">{initials}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-semibold text-card-foreground">{user.name}</p>
+                        <p className="text-sm text-muted-foreground flex items-center gap-1">
+                          <Mail className="w-3.5 h-3.5" />
+                          {user.email}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="grid gap-2 text-sm">
+                      {profileFields.map((field) => {
+                        if (!user?.[field]) return null
+                        return (
+                          <div key={field} className="flex items-center justify-between rounded-md bg-muted/40 px-3 py-2">
+                            <span className="capitalize text-muted-foreground">{field === "yearClass" ? "Class" : field}</span>
+                            <span className="font-medium text-card-foreground">
+                              {field === "about" ? user[field] : (user[field] as string).replace("-", " ")}
+                            </span>
+                          </div>
+                        )
+                      })}
+                    </div>
+                    <Button variant="secondary" className="w-full" asChild>
+                      <Link href="/login">Switch Account</Link>
+                    </Button>
+                  </>
+                ) : (
+                  <div className="space-y-3 text-sm">
+                    <p className="text-muted-foreground">
+                      Sign in to see personalized insights, resume quizzes, and sync progress across devices.
+                    </p>
+                    <Button className="w-full" asChild>
+                      <Link href="/login">Sign In</Link>
+                    </Button>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
             <Card>
               <CardHeader>
                 <CardTitle>Recent Scores</CardTitle>

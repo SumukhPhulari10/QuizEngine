@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import Link from "next/link"
 import { useRouter, useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -59,21 +59,11 @@ export default function QuizPage() {
     new Array(quizData.questions.length).fill(null),
   )
   const [timeLeft, setTimeLeft] = useState(1800) // 30 minutes in seconds
+  const answersRef = useRef(selectedAnswers)
 
-  // Timer countdown
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          handleSubmit()
-          return 0
-        }
-        return prev - 1
-      })
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [])
+    answersRef.current = selectedAnswers
+  }, [selectedAnswers])
 
   const handleAnswerSelect = (answerIndex: number) => {
     const newAnswers = [...selectedAnswers]
@@ -93,18 +83,35 @@ export default function QuizPage() {
     }
   }
 
-  const handleSubmit = () => {
-    // Calculate score
-    const score = selectedAnswers.reduce<number>((acc, answer, index) => {
-      if (answer === quizData.questions[index].correctAnswer) {
-        return acc + 1
-      }
-      return acc
-    }, 0)
+  const handleSubmit = useCallback(
+    (answers?: (number | null)[]) => {
+      const sourceAnswers = answers ?? answersRef.current
+      const score = sourceAnswers.reduce<number>((acc, answer, index) => {
+        if (answer === quizData.questions[index].correctAnswer) {
+          return acc + 1
+        }
+        return acc
+      }, 0)
 
-    // Navigate to results page
-    router.push(`/quiz/${category}/${id}/results?score=${score}&total=${quizData.questions.length}`)
-  }
+      router.push(`/quiz/${category}/${id}/results?score=${score}&total=${quizData.questions.length}`)
+    },
+    [category, id, router],
+  )
+
+  // Timer countdown
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          handleSubmit()
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [handleSubmit])
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60)
@@ -188,7 +195,11 @@ export default function QuizPage() {
             </Button>
 
             {currentQuestion === quizData.questions.length - 1 ? (
-              <Button onClick={handleSubmit} disabled={selectedAnswers.some((answer) => answer === null)} size="lg">
+              <Button
+                onClick={() => handleSubmit(selectedAnswers)}
+                disabled={selectedAnswers.some((answer) => answer === null)}
+                size="lg"
+              >
                 Submit Quiz
               </Button>
             ) : (

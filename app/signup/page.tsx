@@ -8,20 +8,78 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Cpu } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
+import { useToast } from "@/components/ui/use-toast"
+import { StoredUser, getStoredUsers, upsertUser } from "@/lib/profile-storage"
+
+const PROFILE_REDIRECT_DELAY = 800
 
 export default function SignupPage() {
   const router = useRouter()
-  const [role, setRole] = useState("")
+  const { toast } = useToast()
+  const [role, setRole] = useState<StoredUser["role"] | "">("")
   const [branch, setBranch] = useState("")
   const [yearClass, setYearClass] = useState("")
   const [section, setSection] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [fullName, setFullName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [about, setAbout] = useState("")
+
+  const resetOptionalFields = () => {
+    setSection("")
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (role === "teacher") {
-      router.push("/dashboard/teacher")
+    if (isSubmitting) return
+
+    if (!role || !branch || !yearClass) {
+      toast({
+        title: "Missing details",
+        description: "Please select your role, branch, and class to continue.",
+        variant: "destructive",
+      })
       return
     }
+
+    setIsSubmitting(true)
+    const profile: StoredUser = {
+      name: fullName.trim(),
+      email: email.trim(),
+      password: password.trim(),
+      role,
+      branch,
+      yearClass,
+      section: section || undefined,
+      about: about.trim() || undefined,
+      createdAt: new Date().toISOString(),
+    }
+
+    const existingUsers = getStoredUsers()
+    const alreadyRegistered = existingUsers.some((user) => user.email.toLowerCase() === profile.email.toLowerCase())
+    if (alreadyRegistered) {
+      toast({
+        title: "Account exists",
+        description: "That email is already registered. Try signing in instead.",
+        variant: "destructive",
+      })
+      setIsSubmitting(false)
+      return
+    }
+
+    upsertUser(profile)
+    toast({
+      title: "Account created",
+      description: "You can now sign in with your credentials.",
+    })
+
+    setTimeout(() => {
+      router.push(`/login?registered=1&email=${encodeURIComponent(profile.email)}`)
+    }, PROFILE_REDIRECT_DELAY)
   }
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-secondary/10 blur-3xl"></div>
@@ -45,19 +103,46 @@ export default function SignupPage() {
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name</Label>
-                <Input id="name" type="text" placeholder="John Doe" required />
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="John Doe"
+                  required
+                  value={fullName}
+                  onChange={(event) => setFullName(event.target.value)}
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="name@example.com" required />
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="name@example.com"
+                  required
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" placeholder="Create a password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Create a password"
+                  required
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
               </div>
               <div className="space-y-2">
                 <Label>Role</Label>
-                <Select value={role} onValueChange={setRole}>
+                <Select
+                  value={role}
+                  onValueChange={(value: StoredUser["role"]) => {
+                    setRole(value)
+                    resetOptionalFields()
+                  }}
+                >
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select role" />
                   </SelectTrigger>
@@ -88,7 +173,13 @@ export default function SignupPage() {
 
               <div className="space-y-2">
                 <Label>Class</Label>
-                <Select value={yearClass} onValueChange={(v) => { setYearClass(v); setSection("") }}>
+                <Select
+                  value={yearClass}
+                  onValueChange={(value) => {
+                    setYearClass(value)
+                    resetOptionalFields()
+                  }}
+                >
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select class" />
                   </SelectTrigger>
@@ -132,8 +223,19 @@ export default function SignupPage() {
                   </Select>
                 </div>
               )}
-              <Button type="submit" className="w-full" size="lg">
-                Create Account
+              <div className="space-y-2">
+                <Label htmlFor="about">Personal Bio</Label>
+                <Textarea
+                  id="about"
+                  placeholder="Share anything you'd like classmates or faculty to know."
+                  value={about}
+                  onChange={(event) => setAbout(event.target.value)}
+                  rows={4}
+                />
+              </div>
+
+              <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                {isSubmitting ? "Creating profile..." : "Create Account"}
               </Button>
             </form>
           </CardContent>

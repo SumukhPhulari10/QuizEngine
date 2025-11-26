@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../../../../../OneDrive/Desktop/Quiz_engine/QuizEngine/app/quiz/%5Bcategory%5D/%5Bid%5D/results/loading.tsx"],"sourcesContent":["export default function Loading() {\r\n  return null\r\n}\r\n"],"names":[],"mappings":"uCAAe,SAAS,IACtB,OAAO,IACT"}

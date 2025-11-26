@@ -1,0 +1,12 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/dashboard/page": "/dashboard",
+  "/dashboard/teacher/page": "/dashboard/teacher",
+  "/login/page": "/login",
+  "/page": "/",
+  "/quiz/[category]/[id]/page": "/quiz/[category]/[id]",
+  "/quiz/[category]/[id]/results/page": "/quiz/[category]/[id]/results",
+  "/quiz/[category]/page": "/quiz/[category]",
+  "/signup/page": "/signup"
+}

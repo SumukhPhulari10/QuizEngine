@@ -124,4 +124,15 @@
   body {
     @apply bg-background text-foreground;
   }
+  a,
+  button,
+  [role="button"] {
+    @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .card-hover {
+    @apply transition-all hover:-translate-y-1 hover:shadow-xl cursor-pointer;
+  }
 }
