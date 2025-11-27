@@ -1,6 +1,6 @@
 "use client"
 
-import { StoredUser } from "./profile-storage"
+import { StoredUser, getStoredUsers, upsertUser, deleteUser as deleteStoredUser } from "./profile-storage"
 
 const STUDENTS_KEY = "quiz-engine-students"
 const TEACHERS_KEY = "quiz-engine-teachers"
@@ -74,6 +74,68 @@ export const upsertAdmin = (user: StoredUser) => {
   if (idx > -1) users[idx] = user
   else users.push(user)
   set(ADMINS_KEY, users)
+}
+
+export const deleteStudent = (email: string) => {
+  const users = getStudents().filter((u) => u.email.toLowerCase() !== email.toLowerCase())
+  set(STUDENTS_KEY, users)
+}
+
+export const deleteTeacher = (email: string) => {
+  const users = getTeachers().filter((u) => u.email.toLowerCase() !== email.toLowerCase())
+  set(TEACHERS_KEY, users)
+}
+
+export const deleteAdmin = (email: string) => {
+  const users = getAdmins().filter((u) => u.email.toLowerCase() !== email.toLowerCase())
+  set(ADMINS_KEY, users)
+}
+
+export const getAllUsers = (): StoredUser[] => {
+  // normalized from profile storage for comprehensive information
+  return getStoredUsers()
+}
+
+export const deleteUser = (email: string) => {
+  // remove from stored user list
+  deleteStoredUser(email)
+  // remove from role-specific lists as well
+  deleteStudent(email)
+  deleteTeacher(email)
+  deleteAdmin(email)
+  // remove results for the email
+  const results = getResults().filter((r) => r.userEmail.toLowerCase() !== email.toLowerCase())
+  set(RESULTS_KEY, results)
+}
+
+export const changeUserRole = (email: string, role: StoredUser["role"]) => {
+  const users = getStoredUsers()
+  const idx = users.findIndex((u) => u.email.toLowerCase() === email.toLowerCase())
+  if (idx === -1) return
+  const user = { ...users[idx], role }
+  users[idx] = user
+  // save
+  set(STUDENTS_KEY, getStudents().filter((u) => u.email.toLowerCase() !== email.toLowerCase()))
+  set(TEACHERS_KEY, getTeachers().filter((u) => u.email.toLowerCase() !== email.toLowerCase()))
+  set(ADMINS_KEY, getAdmins().filter((u) => u.email.toLowerCase() !== email.toLowerCase()))
+  // add to correct role list
+  if (role === "student") upsertStudent(user)
+  if (role === "teacher") upsertTeacher(user)
+  if (role === "admin") upsertAdmin(user)
+  upsertUser(user)
+}
+
+export const updateUser = (user: StoredUser) => {
+  // update stored users
+  upsertUser(user)
+  // remove from role lists first
+  deleteStudent(user.email)
+  deleteTeacher(user.email)
+  deleteAdmin(user.email)
+  // add to correct role list
+  if (user.role === "student") upsertStudent(user)
+  if (user.role === "teacher") upsertTeacher(user)
+  if (user.role === "admin") upsertAdmin(user)
 }
 
 // Quizzes
@@ -195,6 +257,13 @@ export default {
   upsertTeacher,
   getAdmins,
   upsertAdmin,
+  deleteStudent,
+  deleteTeacher,
+  deleteAdmin,
+  deleteUser,
+  changeUserRole,
+  getAllUsers,
+  updateUser,
   getQuizzes,
   upsertQuiz,
   getResults,

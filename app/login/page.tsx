@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useMemo, useState } from "react"
+import { Suspense, useEffect, useMemo, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -20,6 +20,7 @@ function LoginContent() {
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const formRef = useRef<HTMLFormElement | null>(null)
 
   useEffect(() => {
     if (searchParams?.get("registered")) {
@@ -34,6 +35,12 @@ function LoginContent() {
     event.preventDefault()
     if (isLoading) return
     setIsLoading(true)
+
+    if (!email || !password) {
+      toast({ title: "Missing fields", description: "Enter email and password to sign in.", variant: "destructive" })
+      setIsLoading(false)
+      return
+    }
 
     const user = findUserByCredentials(email, password)
 
@@ -68,6 +75,7 @@ function LoginContent() {
     const destination = profile.role === "teacher" ? "/dashboard/teacher" : "/dashboard"
     setTimeout(() => {
       router.push(destination)
+      setIsLoading(false)
     }, 400)
   }
 
@@ -91,7 +99,7 @@ function LoginContent() {
           </CardHeader>
           <CardContent className="space-y-4">
             {/* Email/Password Form */}
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form ref={formRef} className="space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                   <Input
@@ -133,7 +141,13 @@ function LoginContent() {
                   </button>
                 </div>
               </div>
-              <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
+              <Button
+                type="submit"
+                className="w-full"
+                size="lg"
+                disabled={isLoading}
+                onClick={() => formRef.current?.requestSubmit()}
+              >
                 {isLoading ? "Signing you in..." : "Sign In"}
               </Button>
             </form>

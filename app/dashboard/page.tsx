@@ -141,6 +141,14 @@ export default function DashboardPage() {
                   <span>Settings</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
+                {user?.role === "admin" && (
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard/admin" className="flex items-center w-full">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Admin Dashboard</span>
+                    </Link>
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem onSelect={handleLogout}>
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Log out</span>
@@ -343,6 +351,11 @@ export default function DashboardPage() {
                     Achievements
                   </Link>
                 </Button>
+                  {user?.role === "admin" && (
+                    <Button variant="destructive" className="w-full" asChild>
+                      <Link href="/dashboard/admin">Admin Panel</Link>
+                    </Button>
+                  )}
               </CardContent>
             </Card>
           </div>

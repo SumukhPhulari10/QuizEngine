@@ -421,6 +421,8 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 __turbopack_context__.s([
     "clearActiveUser",
     ()=>clearActiveUser,
+    "deleteUser",
+    ()=>deleteUser,
     "findUserByCredentials",
     ()=>findUserByCredentials,
     "getActiveUser",
@@ -458,6 +460,11 @@ const upsertUser = (user)=>{
     }
     localStorage.setItem(USERS_KEY, JSON.stringify(users));
 };
+const deleteUser = (email)=>{
+    const users = getStoredUsers();
+    const filtered = users.filter((u)=>u.email.toLowerCase() !== email.toLowerCase());
+    localStorage.setItem(USERS_KEY, JSON.stringify(filtered));
+};
 const setActiveUser = (user)=>{
     localStorage.setItem(ACTIVE_KEY, JSON.stringify(user));
 };
@@ -483,12 +490,24 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 __turbopack_context__.s([
     "addResult",
     ()=>addResult,
+    "changeUserRole",
+    ()=>changeUserRole,
     "clearResultsByEmail",
     ()=>clearResultsByEmail,
     "default",
     ()=>__TURBOPACK__default__export__,
+    "deleteAdmin",
+    ()=>deleteAdmin,
+    "deleteStudent",
+    ()=>deleteStudent,
+    "deleteTeacher",
+    ()=>deleteTeacher,
+    "deleteUser",
+    ()=>deleteUser,
     "getAdmins",
     ()=>getAdmins,
+    "getAllUsers",
+    ()=>getAllUsers,
     "getQuizzes",
     ()=>getQuizzes,
     "getResults",
@@ -501,6 +520,8 @@ __turbopack_context__.s([
     ()=>getStudents,
     "getTeachers",
     ()=>getTeachers,
+    "updateUser",
+    ()=>updateUser,
     "upsertAdmin",
     ()=>upsertAdmin,
     "upsertQuiz",
@@ -510,7 +531,9 @@ __turbopack_context__.s([
     "upsertTeacher",
     ()=>upsertTeacher
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/lib/profile-storage.ts [app-client] (ecmascript)");
 "use client";
+;
 const STUDENTS_KEY = "quiz-engine-students";
 const TEACHERS_KEY = "quiz-engine-teachers";
 const ADMINS_KEY = "quiz-engine-admins";
@@ -557,6 +580,64 @@ const upsertAdmin = (user)=>{
     if (idx > -1) users[idx] = user;
     else users.push(user);
     set(ADMINS_KEY, users);
+};
+const deleteStudent = (email)=>{
+    const users = getStudents().filter((u)=>u.email.toLowerCase() !== email.toLowerCase());
+    set(STUDENTS_KEY, users);
+};
+const deleteTeacher = (email)=>{
+    const users = getTeachers().filter((u)=>u.email.toLowerCase() !== email.toLowerCase());
+    set(TEACHERS_KEY, users);
+};
+const deleteAdmin = (email)=>{
+    const users = getAdmins().filter((u)=>u.email.toLowerCase() !== email.toLowerCase());
+    set(ADMINS_KEY, users);
+};
+const getAllUsers = ()=>{
+    // normalized from profile storage for comprehensive information
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getStoredUsers"])();
+};
+const deleteUser = (email)=>{
+    // remove from stored user list
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["deleteUser"])(email);
+    // remove from role-specific lists as well
+    deleteStudent(email);
+    deleteTeacher(email);
+    deleteAdmin(email);
+    // remove results for the email
+    const results = getResults().filter((r)=>r.userEmail.toLowerCase() !== email.toLowerCase());
+    set(RESULTS_KEY, results);
+};
+const changeUserRole = (email, role)=>{
+    const users = (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getStoredUsers"])();
+    const idx = users.findIndex((u)=>u.email.toLowerCase() === email.toLowerCase());
+    if (idx === -1) return;
+    const user = {
+        ...users[idx],
+        role
+    };
+    users[idx] = user;
+    // save
+    set(STUDENTS_KEY, getStudents().filter((u)=>u.email.toLowerCase() !== email.toLowerCase()));
+    set(TEACHERS_KEY, getTeachers().filter((u)=>u.email.toLowerCase() !== email.toLowerCase()));
+    set(ADMINS_KEY, getAdmins().filter((u)=>u.email.toLowerCase() !== email.toLowerCase()));
+    // add to correct role list
+    if (role === "student") upsertStudent(user);
+    if (role === "teacher") upsertTeacher(user);
+    if (role === "admin") upsertAdmin(user);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["upsertUser"])(user);
+};
+const updateUser = (user)=>{
+    // update stored users
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["upsertUser"])(user);
+    // remove from role lists first
+    deleteStudent(user.email);
+    deleteTeacher(user.email);
+    deleteAdmin(user.email);
+    // add to correct role list
+    if (user.role === "student") upsertStudent(user);
+    if (user.role === "teacher") upsertTeacher(user);
+    if (user.role === "admin") upsertAdmin(user);
 };
 const getQuizzes = ()=>{
     const quizzes = get(QUIZZES_KEY);
@@ -668,6 +749,13 @@ const __TURBOPACK__default__export__ = {
     upsertTeacher,
     getAdmins,
     upsertAdmin,
+    deleteStudent,
+    deleteTeacher,
+    deleteAdmin,
+    deleteUser,
+    changeUserRole,
+    getAllUsers,
+    updateUser,
     getQuizzes,
     upsertQuiz,
     getResults,
@@ -731,6 +819,7 @@ function LoginContent() {
     const [password, setPassword] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [showPassword, setShowPassword] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const formRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "LoginContent.useEffect": ()=>{
             if (searchParams?.get("registered")) {
@@ -748,6 +837,15 @@ function LoginContent() {
         event.preventDefault();
         if (isLoading) return;
         setIsLoading(true);
+        if (!email || !password) {
+            toast({
+                title: "Missing fields",
+                description: "Enter email and password to sign in.",
+                variant: "destructive"
+            });
+            setIsLoading(false);
+            return;
+        }
         const user = (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["findUserByCredentials"])(email, password);
         if (!user) {
             toast({
@@ -779,6 +877,7 @@ function LoginContent() {
         const destination = profile.role === "teacher" ? "/dashboard/teacher" : "/dashboard";
         setTimeout(()=>{
             router.push(destination);
+            setIsLoading(false);
         }, 400);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -788,7 +887,7 @@ function LoginContent() {
                 className: "absolute inset-0 bg-gradient-to-br from-accent/10 to-secondary/10 blur-3xl"
             }, void 0, false, {
                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                lineNumber: 76,
+                lineNumber: 84,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -804,12 +903,12 @@ function LoginContent() {
                                     className: "w-6 h-6 text-primary-foreground"
                                 }, void 0, false, {
                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 90,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                lineNumber: 81,
+                                lineNumber: 89,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -817,13 +916,13 @@ function LoginContent() {
                                 children: "QuizEngine"
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                lineNumber: 84,
+                                lineNumber: 92,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                        lineNumber: 80,
+                        lineNumber: 88,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -837,26 +936,27 @@ function LoginContent() {
                                         children: "Welcome Back"
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 97,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
                                         children: "Sign in to your account to continue learning"
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                        lineNumber: 90,
+                                        lineNumber: 98,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                lineNumber: 88,
+                                lineNumber: 96,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
                                 className: "space-y-4",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                                        ref: formRef,
                                         className: "space-y-4",
                                         onSubmit: handleSubmit,
                                         children: [
@@ -868,7 +968,7 @@ function LoginContent() {
                                                         children: "Email"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                        lineNumber: 96,
+                                                        lineNumber: 104,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -882,13 +982,13 @@ function LoginContent() {
                                                         autoComplete: "off"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                        lineNumber: 97,
+                                                        lineNumber: 105,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                lineNumber: 95,
+                                                lineNumber: 103,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -902,7 +1002,7 @@ function LoginContent() {
                                                                 children: "Password"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                                lineNumber: 110,
+                                                                lineNumber: 118,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -911,13 +1011,13 @@ function LoginContent() {
                                                                 children: "Forgot password?"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                                lineNumber: 111,
+                                                                lineNumber: 119,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                        lineNumber: 109,
+                                                        lineNumber: 117,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -934,7 +1034,7 @@ function LoginContent() {
                                                                 autoComplete: "off"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                                lineNumber: 116,
+                                                                lineNumber: 124,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -946,30 +1046,30 @@ function LoginContent() {
                                                                     className: "w-4 h-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                                    lineNumber: 132,
+                                                                    lineNumber: 140,
                                                                     columnNumber: 37
                                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
                                                                     className: "w-4 h-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                                    lineNumber: 132,
+                                                                    lineNumber: 140,
                                                                     columnNumber: 70
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                                lineNumber: 126,
+                                                                lineNumber: 134,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                        lineNumber: 115,
+                                                        lineNumber: 123,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 116,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -977,16 +1077,17 @@ function LoginContent() {
                                                 className: "w-full",
                                                 size: "lg",
                                                 disabled: isLoading,
+                                                onClick: ()=>formRef.current?.requestSubmit(),
                                                 children: isLoading ? "Signing you in..." : "Sign In"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                lineNumber: 136,
+                                                lineNumber: 144,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                        lineNumber: 94,
+                                        lineNumber: 102,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -996,20 +1097,20 @@ function LoginContent() {
                                                 className: "w-4 h-4 text-accent"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                                lineNumber: 141,
+                                                lineNumber: 155,
                                                 columnNumber: 15
                                             }, this),
                                             "Secure by design — we only store data locally on your device."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                        lineNumber: 140,
+                                        lineNumber: 154,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                lineNumber: 92,
+                                lineNumber: 100,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardFooter"], {
@@ -1025,24 +1126,24 @@ function LoginContent() {
                                             children: "Sign up"
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                            lineNumber: 148,
+                                            lineNumber: 162,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                    lineNumber: 146,
+                                    lineNumber: 160,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                lineNumber: 145,
+                                lineNumber: 159,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                        lineNumber: 87,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1056,7 +1157,7 @@ function LoginContent() {
                                 children: "Terms"
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                lineNumber: 157,
+                                lineNumber: 171,
                                 columnNumber: 11
                             }, this),
                             " ",
@@ -1068,29 +1169,29 @@ function LoginContent() {
                                 children: "Privacy Policy"
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                                lineNumber: 161,
+                                lineNumber: 175,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                        lineNumber: 155,
+                        lineNumber: 169,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-                lineNumber: 78,
+                lineNumber: 86,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-        lineNumber: 75,
+        lineNumber: 83,
         columnNumber: 5
     }, this);
 }
-_s(LoginContent, "KS/BIyuLiU/dHJf6vWbfd8Nm77s=", false, function() {
+_s(LoginContent, "knY97nOuK6chL+8UhSk+15dEPpM=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"],
@@ -1105,17 +1206,17 @@ function LoginPage() {
             children: "Preparing secure sign-in..."
         }, void 0, false, {
             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-            lineNumber: 174,
+            lineNumber: 188,
             columnNumber: 9
         }, void 0),
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(LoginContent, {}, void 0, false, {
             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-            lineNumber: 179,
+            lineNumber: 193,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx",
-        lineNumber: 172,
+        lineNumber: 186,
         columnNumber: 5
     }, this);
 }

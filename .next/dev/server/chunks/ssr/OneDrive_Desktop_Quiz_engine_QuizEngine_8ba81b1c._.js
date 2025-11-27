@@ -219,6 +219,8 @@ function AvatarFallback({ className, ...props }) {
 __turbopack_context__.s([
     "clearActiveUser",
     ()=>clearActiveUser,
+    "deleteUser",
+    ()=>deleteUser,
     "findUserByCredentials",
     ()=>findUserByCredentials,
     "getActiveUser",
@@ -256,6 +258,11 @@ const upsertUser = (user)=>{
     }
     localStorage.setItem(USERS_KEY, JSON.stringify(users));
 };
+const deleteUser = (email)=>{
+    const users = getStoredUsers();
+    const filtered = users.filter((u)=>u.email.toLowerCase() !== email.toLowerCase());
+    localStorage.setItem(USERS_KEY, JSON.stringify(filtered));
+};
 const setActiveUser = (user)=>{
     localStorage.setItem(ACTIVE_KEY, JSON.stringify(user));
 };
@@ -278,12 +285,24 @@ const findUserByCredentials = (email, password)=>{
 __turbopack_context__.s([
     "addResult",
     ()=>addResult,
+    "changeUserRole",
+    ()=>changeUserRole,
     "clearResultsByEmail",
     ()=>clearResultsByEmail,
     "default",
     ()=>__TURBOPACK__default__export__,
+    "deleteAdmin",
+    ()=>deleteAdmin,
+    "deleteStudent",
+    ()=>deleteStudent,
+    "deleteTeacher",
+    ()=>deleteTeacher,
+    "deleteUser",
+    ()=>deleteUser,
     "getAdmins",
     ()=>getAdmins,
+    "getAllUsers",
+    ()=>getAllUsers,
     "getQuizzes",
     ()=>getQuizzes,
     "getResults",
@@ -296,6 +315,8 @@ __turbopack_context__.s([
     ()=>getStudents,
     "getTeachers",
     ()=>getTeachers,
+    "updateUser",
+    ()=>updateUser,
     "upsertAdmin",
     ()=>upsertAdmin,
     "upsertQuiz",
@@ -305,7 +326,9 @@ __turbopack_context__.s([
     "upsertTeacher",
     ()=>upsertTeacher
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/lib/profile-storage.ts [app-ssr] (ecmascript)");
 "use client";
+;
 const STUDENTS_KEY = "quiz-engine-students";
 const TEACHERS_KEY = "quiz-engine-teachers";
 const ADMINS_KEY = "quiz-engine-admins";
@@ -352,6 +375,64 @@ const upsertAdmin = (user)=>{
     if (idx > -1) users[idx] = user;
     else users.push(user);
     set(ADMINS_KEY, users);
+};
+const deleteStudent = (email)=>{
+    const users = getStudents().filter((u)=>u.email.toLowerCase() !== email.toLowerCase());
+    set(STUDENTS_KEY, users);
+};
+const deleteTeacher = (email)=>{
+    const users = getTeachers().filter((u)=>u.email.toLowerCase() !== email.toLowerCase());
+    set(TEACHERS_KEY, users);
+};
+const deleteAdmin = (email)=>{
+    const users = getAdmins().filter((u)=>u.email.toLowerCase() !== email.toLowerCase());
+    set(ADMINS_KEY, users);
+};
+const getAllUsers = ()=>{
+    // normalized from profile storage for comprehensive information
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getStoredUsers"])();
+};
+const deleteUser = (email)=>{
+    // remove from stored user list
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["deleteUser"])(email);
+    // remove from role-specific lists as well
+    deleteStudent(email);
+    deleteTeacher(email);
+    deleteAdmin(email);
+    // remove results for the email
+    const results = getResults().filter((r)=>r.userEmail.toLowerCase() !== email.toLowerCase());
+    set(RESULTS_KEY, results);
+};
+const changeUserRole = (email, role)=>{
+    const users = (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getStoredUsers"])();
+    const idx = users.findIndex((u)=>u.email.toLowerCase() === email.toLowerCase());
+    if (idx === -1) return;
+    const user = {
+        ...users[idx],
+        role
+    };
+    users[idx] = user;
+    // save
+    set(STUDENTS_KEY, getStudents().filter((u)=>u.email.toLowerCase() !== email.toLowerCase()));
+    set(TEACHERS_KEY, getTeachers().filter((u)=>u.email.toLowerCase() !== email.toLowerCase()));
+    set(ADMINS_KEY, getAdmins().filter((u)=>u.email.toLowerCase() !== email.toLowerCase()));
+    // add to correct role list
+    if (role === "student") upsertStudent(user);
+    if (role === "teacher") upsertTeacher(user);
+    if (role === "admin") upsertAdmin(user);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["upsertUser"])(user);
+};
+const updateUser = (user)=>{
+    // update stored users
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$profile$2d$storage$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["upsertUser"])(user);
+    // remove from role lists first
+    deleteStudent(user.email);
+    deleteTeacher(user.email);
+    deleteAdmin(user.email);
+    // add to correct role list
+    if (user.role === "student") upsertStudent(user);
+    if (user.role === "teacher") upsertTeacher(user);
+    if (user.role === "admin") upsertAdmin(user);
 };
 const getQuizzes = ()=>{
     const quizzes = get(QUIZZES_KEY);
@@ -463,6 +544,13 @@ const __TURBOPACK__default__export__ = {
     upsertTeacher,
     getAdmins,
     upsertAdmin,
+    deleteStudent,
+    deleteTeacher,
+    deleteAdmin,
+    deleteUser,
+    changeUserRole,
+    getAllUsers,
+    updateUser,
     getQuizzes,
     upsertQuiz,
     getResults,

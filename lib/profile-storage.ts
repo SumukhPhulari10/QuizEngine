@@ -40,6 +40,12 @@ export const upsertUser = (user: StoredUser) => {
   localStorage.setItem(USERS_KEY, JSON.stringify(users))
 }
 
+export const deleteUser = (email: string) => {
+  const users = getStoredUsers()
+  const filtered = users.filter((u) => u.email.toLowerCase() !== email.toLowerCase())
+  localStorage.setItem(USERS_KEY, JSON.stringify(filtered))
+}
+
 export type ActiveUser = Omit<StoredUser, "password"> & { lastLogin?: string }
 
 export const setActiveUser = (user: ActiveUser) => {
