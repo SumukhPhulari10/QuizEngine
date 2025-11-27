@@ -13,30 +13,53 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "@/hooks/use-toast"
 
+function ProfileEditor({ viewingUser, canEditViewing, onSave }: { viewingUser: StoredUser | null | undefined; canEditViewing: boolean; onSave: (u: StoredUser) => void }) {
+  const [name, setName] = useState(() => viewingUser?.name || "")
+  const [about, setAbout] = useState(() => viewingUser?.about || "")
+  const [branch, setBranch] = useState(() => viewingUser?.branch || "")
+  const [yearClass, setYearClass] = useState(() => viewingUser?.yearClass || "")
+
+  useEffect(() => {
+    // no setState here; component remounts when viewingUser changes via key in parent
+  }, [])
+
+  return (
+    <div className="mt-4 grid grid-cols-1 gap-3">
+      <div>
+        <Label>Name</Label>
+        <Input value={name} onChange={(e) => setName(e.target.value)} disabled={!canEditViewing} />
+      </div>
+      <div>
+        <Label>About</Label>
+        <Input value={about} onChange={(e) => setAbout(e.target.value)} disabled={!canEditViewing} />
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <div>
+          <Label>Branch</Label>
+          <Input value={branch} onChange={(e) => setBranch(e.target.value)} disabled={!canEditViewing} />
+        </div>
+        <div>
+          <Label>Class</Label>
+          <Input value={yearClass} onChange={(e) => setYearClass(e.target.value)} disabled={!canEditViewing} />
+        </div>
+      </div>
+      <div className="flex gap-2">
+        <Button onClick={() => onSave({ ...(viewingUser as StoredUser), name, about, branch, yearClass } as StoredUser)}>Save</Button>
+      </div>
+    </div>
+  )
+}
+
 export default function ProfilePage() {
   const router = useRouter()
   const [activeUser, setActiveUserState] = useState(() => getActiveUser())
   const [viewingUser, setViewingUser] = useState<StoredUser | (typeof activeUser) | null>(() => getActiveUser())
-  const [results, setResults] = useState<any[]>(() => (activeUser ? db.getResultsByEmail(activeUser.email) : []))
+  const results = useMemo(() => (viewingUser ? db.getResultsByEmail((viewingUser as StoredUser).email) : []), [viewingUser])
 
-  // editable fields
-  const [name, setName] = useState("")
-  const [about, setAbout] = useState("")
-  const [branch, setBranch] = useState("")
-  const [yearClass, setYearClass] = useState("")
+  // The profile editor is a child component which manages editable fields; it re-initializes on viewingUser change
 
-  useEffect(() => {
-    const au = getActiveUser()
-    setActiveUserState(au)
-    setViewingUser(au)
-    if (au) {
-      setResults(db.getResultsByEmail(au.email))
-      setName(au.name || "")
-      setAbout(au.about || "")
-      setBranch(au.branch || "")
-      setYearClass(au.yearClass || "")
-    }
-  }, [])
+  // initialize editing fields from current viewing user; update on viewingUser change
+  // Initialize editing fields and results derives from viewingUser
 
   // when teacher/admin selects a different user to view
   const handleSelectViewingUser = (email?: string) => {
@@ -156,63 +179,24 @@ export default function ProfilePage() {
                     </div>
 
                     {/* editing area */}
-                    <div className="mt-4 grid grid-cols-1 gap-3">
-                      <div>
-                        <Label>Name</Label>
-                        <Input value={name} onChange={(e) => setName(e.target.value)} disabled={!canEditViewing} />
-                      </div>
-                      <div>
-                        <Label>About</Label>
-                        <Input value={about} onChange={(e) => setAbout(e.target.value)} disabled={!canEditViewing} />
-                      </div>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>
-                          <Label>Branch</Label>
-                          <Input value={branch} onChange={(e) => setBranch(e.target.value)} disabled={!canEditViewing} />
-                        </div>
-                        <div>
-                          <Label>Class</Label>
-                          <Input value={yearClass} onChange={(e) => setYearClass(e.target.value)} disabled={!canEditViewing} />
-                        </div>
-                      </div>
-                      <div className="flex gap-2">
-                        <Button onClick={() => exportCsv(displayedUser.email)}>Export Activity CSV</Button>
-                        {canEditViewing && (
-                          <Button
-                            variant="secondary"
-                            onClick={() => {
-                              // save
-                              if (!displayedUser) return
-                              // preserve stored password/createdAt if present
-                              const storedUsers = typeof window !== "undefined" ? (localStorage.getItem("quiz-engine-users") ? JSON.parse(localStorage.getItem("quiz-engine-users")!) : []) : []
-                              const existing = storedUsers.find((s: any) => s.email === (displayedUser as StoredUser).email)
-                              const merged: StoredUser = {
-                                ...(displayedUser as StoredUser),
-                                name: name || (displayedUser as StoredUser).name,
-                                about: about,
-                                branch: branch,
-                                yearClass: yearClass,
-                                password: existing?.password ?? (displayedUser as StoredUser).password ?? "",
-                                createdAt: existing?.createdAt ?? (displayedUser as StoredUser).createdAt ?? new Date().toISOString(),
-                              }
-                              upsertUser(merged)
-                              // keep role-specific collections in sync
-                              if (merged.role === "student") db.upsertStudent(merged)
-                              if (merged.role === "teacher") db.upsertTeacher(merged)
-                              if (merged.role === "admin") db.upsertAdmin(merged)
-                              // if editing own profile, update active user
-                              if (activeUser && activeUser.email === merged.email) {
-                                setActiveUser({ ...merged, lastLogin: activeUser.lastLogin })
-                                setActiveUserState(getActiveUser())
-                              }
-                              toast({ title: "Profile saved" })
-                            }}
-                          >
-                            Save
-                          </Button>
-                        )}
-                      </div>
-                    </div>
+                    <ProfileEditor
+                      key={(viewingUser as StoredUser)?.email ?? "self"}
+                      viewingUser={viewingUser as StoredUser}
+                      canEditViewing={canEditViewing}
+                      onSave={(merged: StoredUser) => {
+                        // keep role-specific collections in sync
+                        upsertUser(merged)
+                        if (merged.role === "student") db.upsertStudent(merged)
+                        if (merged.role === "teacher") db.upsertTeacher(merged)
+                        if (merged.role === "admin") db.upsertAdmin(merged)
+                        // if editing own profile, update active user
+                        if (activeUser && activeUser.email === merged.email) {
+                          setActiveUser({ ...merged, lastLogin: activeUser.lastLogin })
+                          setActiveUserState(getActiveUser())
+                        }
+                        toast({ title: "Profile saved" })
+                      }}
+                    />
                   </div>
                 </div>
               ) : (

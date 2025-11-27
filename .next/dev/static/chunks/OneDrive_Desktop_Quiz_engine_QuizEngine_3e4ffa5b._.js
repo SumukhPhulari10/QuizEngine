@@ -742,7 +742,7 @@ const getResultsByEmail = (email)=>{
 const getResultsByQuiz = (quizId)=>{
     return getResults().filter((r)=>r.quizId === quizId);
 };
-const __TURBOPACK__default__export__ = {
+const DB = {
     getStudents,
     upsertStudent,
     getTeachers,
@@ -765,6 +765,7 @@ const __TURBOPACK__default__export__ = {
     clearResultsByEmail,
     ensureDefaultQuizzes
 };
+const __TURBOPACK__default__export__ = DB;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

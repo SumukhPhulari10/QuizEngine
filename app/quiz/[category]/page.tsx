@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 import { useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -15,22 +15,12 @@ export default function QuizCategoryPageClient() {
   const params = useParams()
   const categoryParam = (params?.category as string) ?? "general"
   const [quizzes, setQuizzes] = useState(() => db.getQuizzes())
-  const [filtered, setFiltered] = useState<typeof quizzes>([])
-
-  useEffect(() => {
-    // refresh quizzes from storage
-    setQuizzes(db.getQuizzes())
-  }, [])
-
-  useEffect(() => {
-    // Enforce branch-only content for signed-in students.
+  const filtered = useMemo(() => {
     const active = getActiveUser()
     if (active && active.role === "student") {
-      setFiltered(quizzes.filter((q) => q.branch === active.branch))
-    } else {
-      // non-students (teacher/admin) can view by category param (branch)
-      setFiltered(quizzes.filter((q) => q.branch === categoryParam))
+      return quizzes.filter((q) => q.branch === active.branch)
     }
+    return quizzes.filter((q) => q.branch === categoryParam)
   }, [quizzes, categoryParam])
 
   return (

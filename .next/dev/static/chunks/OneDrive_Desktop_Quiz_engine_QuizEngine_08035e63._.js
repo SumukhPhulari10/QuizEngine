@@ -749,7 +749,7 @@ const getResultsByEmail = (email)=>{
 const getResultsByQuiz = (quizId)=>{
     return getResults().filter((r)=>r.quizId === quizId);
 };
-const __TURBOPACK__default__export__ = {
+const DB = {
     getStudents,
     upsertStudent,
     getTeachers,
@@ -772,6 +772,7 @@ const __TURBOPACK__default__export__ = {
     clearResultsByEmail,
     ensureDefaultQuizzes
 };
+const __TURBOPACK__default__export__ = DB;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -848,9 +849,7 @@ function AdminDashboardPage() {
                 results
             };
         }
-    }["AdminDashboardPage.useMemo[totals]"], [
-        users
-    ]);
+    }["AdminDashboardPage.useMemo[totals]"], []);
     const handleDelete = (email)=>{
         if (!confirm(`Delete user ${email}? This cannot be undone.`)) return;
         __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$lib$2f$db$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].deleteUser(email);

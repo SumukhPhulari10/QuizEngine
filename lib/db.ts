@@ -250,7 +250,7 @@ export const getResultsByQuiz = (quizId: string): Result[] => {
   return getResults().filter((r) => r.quizId === quizId)
 }
 
-export default {
+const DB = {
   getStudents,
   upsertStudent,
   getTeachers,
@@ -273,3 +273,5 @@ export default {
   clearResultsByEmail,
   ensureDefaultQuizzes,
 }
+
+export default DB

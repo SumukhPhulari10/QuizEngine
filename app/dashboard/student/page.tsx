@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
@@ -12,10 +12,10 @@ import db from "@/lib/db"
 export default function StudentDashboardPage() {
   const router = useRouter()
   const [user, setUser] = useState<ActiveUser | null>(() => getActiveUser())
-  const [quizzes, setQuizzes] = useState(() => db.getQuizzes())
-  const [results, setResults] = useState(() => (user ? db.getResultsByEmail(user.email) : []))
+  const [quizzes] = useState(() => db.getQuizzes())
+  const results = useMemo(() => (user ? db.getResultsByEmail(user.email) : []), [user])
   const [showOtherBranches, setShowOtherBranches] = useState(false)
-  const [subjects, setSubjects] = useState<string[]>([])
+  // subjects are derived from quizzes / user
   const [selectedSubject, setSelectedSubject] = useState<string | null>(null)
 
   useEffect(() => {
@@ -24,30 +24,19 @@ export default function StudentDashboardPage() {
     }
   }, [router, user])
 
-  useEffect(() => {
-    setQuizzes(db.getQuizzes())
-  }, [])
-
-  useEffect(() => {
-    // derive subjects (categories) for the current user's branch
+  const subjects = useMemo(() => {
     const all = db.getQuizzes()
     if (user) {
-      const branchSubjects = Array.from(
-        new Set(all.filter((q) => q.branch === user.branch).map((q) => q.category ?? q.title))
-      )
-      setSubjects(branchSubjects)
-    } else {
-      setSubjects([])
+      return Array.from(new Set(all.filter((q) => q.branch === user.branch).map((q) => q.category ?? q.title)))
     }
+    return []
   }, [user])
 
   const quizzesForSelectedSubject = selectedSubject
     ? quizzes.filter((q) => (q.category ?? q.title) === selectedSubject && q.branch === user?.branch)
     : []
 
-  useEffect(() => {
-    if (user) setResults(db.getResultsByEmail(user.email))
-  }, [user])
+  // results is derived using useMemo above
 
   const initials = user?.name
     ? user.name

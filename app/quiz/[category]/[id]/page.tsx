@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useCallback, useRef, useMemo } from "react"
 import Link from "next/link"
 import { useRouter, useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -34,28 +34,22 @@ export default function QuizPage() {
   const params = useParams()
   const category = params.category as string
   const id = params.id as string
-  const [quizData, setQuizData] = useState<any | null>(null)
+  const initialQuiz = useMemo(() => {
+    const all = db.getQuizzes()
+    return all.find((q) => q.id === id) ?? null
+  }, [id])
+  const quizData = initialQuiz
   const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>([])
-  const [timeLeft, setTimeLeft] = useState(1800) // 30 minutes in seconds
+  const initialQuestions = useMemo(() => (quizData?.questions && quizData.questions.length ? quizData.questions : FALLBACK_QUESTIONS) as any[], [quizData])
+  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>(() => new Array(initialQuestions.length).fill(null))
+  const [timeLeft, setTimeLeft] = useState(() => (quizData?.duration ? quizData.duration * 60 : 30 * 60))
   const answersRef = useRef(selectedAnswers)
 
   useEffect(() => {
     answersRef.current = selectedAnswers
   }, [selectedAnswers])
 
-  useEffect(() => {
-    const all = db.getQuizzes()
-    const quiz = all.find((q) => q.id === id)
-    if (quiz) {
-      setQuizData(quiz)
-      const questions = (quiz.questions && quiz.questions.length ? quiz.questions : FALLBACK_QUESTIONS) as any[]
-      setSelectedAnswers(new Array(questions.length).fill(null))
-    } else {
-      setQuizData(null)
-      setSelectedAnswers([])
-    }
-  }, [id])
+  // quizData is derived via `useMemo` above; initialization happens at render time without effects
 
   const handleAnswerSelect = (answerIndex: number) => {
     const newAnswers = [...selectedAnswers]

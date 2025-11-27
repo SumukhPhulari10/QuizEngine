@@ -693,7 +693,7 @@ const getResultsByEmail = (email)=>{
 const getResultsByQuiz = (quizId)=>{
     return getResults().filter((r)=>r.quizId === quizId);
 };
-const __TURBOPACK__default__export__ = {
+const DB = {
     getStudents,
     upsertStudent,
     getTeachers,
@@ -716,6 +716,7 @@ const __TURBOPACK__default__export__ = {
     clearResultsByEmail,
     ensureDefaultQuizzes
 };
+const __TURBOPACK__default__export__ = DB;
 }),
 "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/login/page.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";

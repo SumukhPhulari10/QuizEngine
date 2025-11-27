@@ -1,0 +1,35 @@
+{
+  "sorted_middleware": [],
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge/chunks/OneDrive_Desktop_Quiz_engine_QuizEngine_79cdd14a._.js",
+        "server/edge/chunks/[root-of-the-server]__fe5a917e._.js",
+        "server/edge/chunks/turbopack-OneDrive_Desktop_Quiz_engine_QuizEngine_edge-wrapper_098d78f8.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/dashboard/:path*{(\\\\.json)}?",
+          "originalSource": "/dashboard/:path*"
+        },
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/dashboard{(\\\\.json)}?",
+          "originalSource": "/dashboard"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "lPmVI0VYPv6m7Gogs8nQa7fwY2q5MUYlJjh5TFVCWrg=",
+        "__NEXT_PREVIEW_MODE_ID": "6df2943bb57c1bfb782cfe2bb5fcb15c",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5374885a8a44725581c4f89f665cb3b128a757ea87c6d878a67c7548278a3601",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "f66c026e3aa4e64a3e59847330a86b4cac66dcce93fddac4e231f337a24a04c9"
+      }
+    }
+  },
+  "instrumentation": null,
+  "functions": {}
+}

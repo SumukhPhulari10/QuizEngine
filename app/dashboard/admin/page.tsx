@@ -45,7 +45,7 @@ export default function AdminDashboardPage() {
     const quizzes = db.getQuizzes().length
     const results = db.getResults().length
     return { students, teachers, admins, quizzes, results }
-  }, [users])
+  }, [])
 
   const handleDelete = (email: string) => {
     if (!confirm(`Delete user ${email}? This cannot be undone.`)) return

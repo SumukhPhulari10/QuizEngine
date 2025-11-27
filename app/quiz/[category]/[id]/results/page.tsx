@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React, { useMemo } from "react"
 import { useSearchParams, useRouter, useParams } from "next/navigation"
 import Link from "next/link"
 import db from "@/lib/db"
@@ -14,12 +14,9 @@ export default function QuizResultsPage() {
   const category = (params?.category as string) ?? "general"
   const id = (params?.id as string) ?? ""
   const resultId = search?.get("resultId")
-  const [result, setResult] = useState<any | null>(null)
-
-  useEffect(() => {
-    if (!resultId) return
-    const found = db.getResults().find((r) => r.id === resultId)
-    if (found) setResult(found)
+  const result = useMemo(() => {
+    if (!resultId) return null
+    return db.getResults().find((r) => r.id === resultId) ?? null
   }, [resultId])
 
   // fallback to query params if result is not persisted
