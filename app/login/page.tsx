@@ -1,13 +1,55 @@
+"use client"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Cpu } from "lucide-react"
+import { supabase } from "@/lib/supabase/client"
+import PopupModal from "@/components/PopupModal"
 
 export default function LoginPage() {
+  const router = useRouter()
+  const [error, setError] = useState("")
+  const [popup, setPopup] = useState("")
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setError("")
+
+    const formData = new FormData(e.currentTarget)
+    const email = String(formData.get("email") || "")
+    const password = String(formData.get("password") || "")
+
+    const { data: { user }, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+
+    if (error) {
+      setError(error.message)
+      return
+    }
+
+    // fetch profile name
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("full_name")
+      .eq("id", user!.id)
+      .single()
+
+    // show popup
+    setPopup(`Welcome back, ${profile?.full_name || "User"}!`)
+  }
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <PopupModal
+        message={popup}
+        visible={popup.length > 0}
+        onClose={() => router.push("/dashboard")}
+      />
       <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-secondary/10 blur-3xl"></div>
 
       <div className="w-full max-w-md relative z-10">
@@ -26,10 +68,10 @@ export default function LoginPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {/* Email/Password Form */}
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleLogin}>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="name@example.com" required />
+                <Input id="email" name="email" type="email" placeholder="name@example.com" required />
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -38,7 +80,7 @@ export default function LoginPage() {
                     Forgot password?
                   </Link>
                 </div>
-                <Input id="password" type="password" placeholder="Enter your password" required />
+                <Input id="password" name="password" type="password" placeholder="Enter your password" required />
               </div>
               <Button type="submit" className="w-full" size="lg">
                 Sign In

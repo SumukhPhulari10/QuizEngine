@@ -13,6 +13,8 @@ import {
 import { Progress } from "@/components/ui/progress"
 import { Code, Cpu, Target, Trophy, Brain, ChevronRight, LogOut, Settings, User } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { supabaseServer } from "@/lib/supabase/server"
+import ProfileInfo from "@/components/ProfileInfo"
 
 const categories = [
   {
@@ -73,7 +75,20 @@ const recentScores = [
   { category: "ECE", quiz: "Digital Circuits", score: 78, total: 100, date: "5 days ago" },
 ]
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const supabase = await supabaseServer()
+  const { data: { user } } = await supabase.auth.getUser()
+  let fullName: string | null = null
+  let email: string | null = null
+  if (user) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("full_name, email")
+      .eq("id", user.id)
+      .single()
+    fullName = profile?.full_name ?? null
+    email = profile?.email ?? null
+  }
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -99,19 +114,18 @@ export default function DashboardPage() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56" align="end">
                 <DropdownMenuLabel>
-                  <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">John Doe</p>
-                    <p className="text-xs leading-none text-muted-foreground">john@example.com</p>
-                  </div>
+                  <ProfileInfo />
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <User className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Settings className="mr-2 h-4 w-4" />
-                  <span>Settings</span>
+                <DropdownMenuItem asChild>
+                  <Link href="/settings" className="flex items-center gap-2">
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Settings</span>
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
@@ -127,7 +141,7 @@ export default function DashboardPage() {
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Welcome back, John!</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Welcome back, {fullName || "User"}!</h1>
           <p className="text-muted-foreground">Continue your learning journey and track your progress</p>
         </div>
 

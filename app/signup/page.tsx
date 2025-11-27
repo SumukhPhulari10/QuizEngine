@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Cpu } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { supabase } from "@/lib/supabase/client"
+import PopupModal from "@/components/PopupModal"
 
 export default function SignupPage() {
   const router = useRouter()
@@ -15,15 +17,43 @@ export default function SignupPage() {
   const [branch, setBranch] = useState("")
   const [yearClass, setYearClass] = useState("")
   const [section, setSection] = useState("")
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [error, setError] = useState("")
+  const [popup, setPopup] = useState(false)
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (role === "teacher") {
-      router.push("/dashboard/teacher")
+    setError("")
+
+    const formData = new FormData(e.currentTarget)
+    const email = String(formData.get("email") || "")
+    const password = String(formData.get("password") || "")
+    const fullName = (e.currentTarget as HTMLFormElement)
+      .querySelector<HTMLInputElement>("#name")?.value || ""
+
+    const { data: { user }, error: signupError } = await supabase.auth.signUp({
+      email,
+      password,
+    })
+
+    if (signupError) {
+      setError(signupError.message)
       return
     }
+
+    // Save full name in Supabase profiles table
+    await supabase
+      .from("profiles")
+      .update({ full_name: fullName })
+      .eq("id", user!.id)
+
+    router.push("/login")
   }
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <PopupModal
+        message="Account created successfully! Check your email to verify."
+        visible={popup}
+        onClose={() => router.push("/login")}
+      />
       <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-secondary/10 blur-3xl"></div>
 
       <div className="w-full max-w-md relative z-10">
@@ -42,18 +72,18 @@ export default function SignupPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {/* Email/Password Form */}
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="space-y-4" onSubmit={handleSignup}>
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name</Label>
                 <Input id="name" type="text" placeholder="John Doe" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="name@example.com" required />
+                <Input id="email" name="email" type="email" placeholder="name@example.com" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" placeholder="Create a password" required />
+                <Input id="password" name="password" type="password" placeholder="Create a password" required />
               </div>
               <div className="space-y-2">
                 <Label>Role</Label>
