@@ -1,86 +1,40 @@
+"use client"
+
+import React, { useEffect, useState } from "react"
 import Link from "next/link"
+import { useParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Cpu, ArrowLeft, Clock, HelpCircle, Trophy, Brain } from "lucide-react"
+import { ArrowLeft, Clock, HelpCircle, Brain } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import db from "@/lib/db"
+import { getActiveUser } from "@/lib/profile-storage"
 
-const quizzes = [
-  {
-    id: 1,
-    title: "Data Structures Fundamentals",
-    description: "Arrays, linked lists, stacks, queues, and trees",
-    difficulty: "Easy",
-    questions: 20,
-    duration: 30,
-    attempted: false,
-    bestScore: null,
-  },
-  {
-    id: 2,
-    title: "Advanced Algorithms",
-    description: "Sorting, searching, dynamic programming, and greedy algorithms",
-    difficulty: "Hard",
-    questions: 25,
-    duration: 45,
-    attempted: true,
-    bestScore: 85,
-  },
-  {
-    id: 3,
-    title: "Object-Oriented Programming",
-    description: "Classes, inheritance, polymorphism, and design patterns",
-    difficulty: "Medium",
-    questions: 15,
-    duration: 25,
-    attempted: true,
-    bestScore: 92,
-  },
-  {
-    id: 4,
-    title: "Database Management Systems",
-    description: "SQL, normalization, transactions, and indexing",
-    difficulty: "Medium",
-    questions: 20,
-    duration: 30,
-    attempted: false,
-    bestScore: null,
-  },
-  {
-    id: 5,
-    title: "Operating Systems Concepts",
-    description: "Process management, memory, scheduling, and file systems",
-    difficulty: "Hard",
-    questions: 30,
-    duration: 50,
-    attempted: false,
-    bestScore: null,
-  },
-  {
-    id: 6,
-    title: "Computer Networks Basics",
-    description: "TCP/IP, routing, protocols, and network security",
-    difficulty: "Easy",
-    questions: 18,
-    duration: 25,
-    attempted: true,
-    bestScore: 78,
-  },
-]
+export default function QuizCategoryPageClient() {
+  const params = useParams()
+  const categoryParam = (params?.category as string) ?? "general"
+  const [quizzes, setQuizzes] = useState(() => db.getQuizzes())
+  const [filtered, setFiltered] = useState<typeof quizzes>([])
 
-const difficultyColors = {
-  Easy: "bg-green-500/10 text-green-500 border-green-500/20",
-  Medium: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
-  Hard: "bg-red-500/10 text-red-500 border-red-500/20",
-}
+  useEffect(() => {
+    // refresh quizzes from storage
+    setQuizzes(db.getQuizzes())
+  }, [])
 
-export default async function QuizCategoryPage({ params }: { params: Promise<{ category: string }> }) {
-  const { category } = await params
-  const categoryName = category.toUpperCase()
+  useEffect(() => {
+    // Enforce branch-only content for signed-in students.
+    const active = getActiveUser()
+    if (active && active.role === "student") {
+      setFiltered(quizzes.filter((q) => q.branch === active.branch))
+    } else {
+      // non-students (teacher/admin) can view by category param (branch)
+      setFiltered(quizzes.filter((q) => q.branch === categoryParam))
+    }
+  }, [quizzes, categoryParam])
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/dashboard" className="flex items-center gap-2">
@@ -89,12 +43,13 @@ export default async function QuizCategoryPage({ params }: { params: Promise<{ c
             </div>
             <span className="text-xl font-bold text-foreground">QuizEngine</span>
           </Link>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
       <div className="container mx-auto px-4 py-8">
-        {/* Back Button & Title */}
         <div className="mb-8">
           <Button variant="ghost" className="mb-4" asChild>
             <Link href="/dashboard">
@@ -102,28 +57,19 @@ export default async function QuizCategoryPage({ params }: { params: Promise<{ c
               Back to Dashboard
             </Link>
           </Button>
-          <h1 className="text-3xl font-bold text-foreground mb-2">{categoryName} Quizzes</h1>
-          <p className="text-muted-foreground">Choose a quiz to test your knowledge</p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">{categoryParam.toUpperCase()} Quizzes</h1>
+          <p className="text-muted-foreground">Only quizzes for your branch are shown.</p>
         </div>
 
-        {/* Quiz List */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {quizzes.map((quiz) => (
+          {filtered.length === 0 && (
+            <div className="text-sm text-muted-foreground">No quizzes available for your branch.</div>
+          )}
+          {filtered.map((quiz) => (
             <Card key={quiz.id} className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-start justify-between mb-2">
-                  <Badge
-                    variant="outline"
-                    className={difficultyColors[quiz.difficulty as keyof typeof difficultyColors]}
-                  >
-                    {quiz.difficulty}
-                  </Badge>
-                  {quiz.attempted && quiz.bestScore && (
-                    <div className="flex items-center gap-1 text-sm text-accent">
-                      <Trophy className="w-4 h-4" />
-                      <span className="font-medium">{quiz.bestScore}%</span>
-                    </div>
-                  )}
+                  <Badge variant="outline">{quiz.category ?? "Subject"}</Badge>
                 </div>
                 <CardTitle className="text-xl text-card-foreground">{quiz.title}</CardTitle>
                 <CardDescription>{quiz.description}</CardDescription>
@@ -132,15 +78,15 @@ export default async function QuizCategoryPage({ params }: { params: Promise<{ c
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <HelpCircle className="w-4 h-4" />
-                    <span>{quiz.questions} questions</span>
+                    <span>{(quiz.questions || []).length} questions</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
-                    <span>{quiz.duration} mins</span>
+                    <span>{quiz.duration ?? 30} mins</span>
                   </div>
                 </div>
                 <Button className="w-full" asChild>
-                  <Link href={`/quiz/${category}/${quiz.id}`}>{quiz.attempted ? "Retake Quiz" : "Start Quiz"}</Link>
+                  <Link href={`/quiz/${quiz.branch ?? categoryParam}/${quiz.id}`}>Start Quiz</Link>
                 </Button>
               </CardContent>
             </Card>

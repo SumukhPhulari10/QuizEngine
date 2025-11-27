@@ -72,7 +72,9 @@ export default function TeacherDashboardPage() {
             </p>
           </div>
           <div className="flex gap-2">
-            <Button>Create Quiz</Button>
+            <Button asChild>
+              <Link href="/dashboard/teacher/create-quiz">Create Quiz</Link>
+            </Button>
             <Button variant="secondary">Assign Task</Button>
           </div>
         </div>

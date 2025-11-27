@@ -1,21 +1,32 @@
 "use client"
-
-import { useSearchParams, useParams } from "next/navigation"
+import React, { useEffect, useState } from "react"
+import { useSearchParams, useRouter, useParams } from "next/navigation"
 import Link from "next/link"
+import db from "@/lib/db"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Cpu, Trophy, RotateCcw, Home, TrendingUp, Target } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
 
-export default function ResultsPage() {
-  const searchParams = useSearchParams()
+export default function QuizResultsPage() {
+  const search = useSearchParams()
+  const router = useRouter()
   const params = useParams()
   const category = params.category as string
   const id = params.id as string
+  const resultId = search?.get("resultId")
+  const [result, setResult] = useState<any | null>(null)
 
-  const score = Number.parseInt(searchParams.get("score") || "0")
-  const total = Number.parseInt(searchParams.get("total") || "5")
-  const percentage = Math.round((score / total) * 100)
+  useEffect(() => {
+    if (resultId) {
+      const found = db.getResults().find((r) => r.id === resultId)
+      if (found) setResult(found)
+    }
+  }, [resultId])
+
+  const score = result ? result.score : Number.parseInt(search?.get("score") || "0")
+  const total = result ? result.total : Number.parseInt(search?.get("total") || "5")
+  const percentage = total ? Math.round((score / total) * 100) : 0
 
   const getPerformanceLevel = (percent: number) => {
     if (percent >= 90) return { level: "Outstanding", color: "text-green-500", bgColor: "bg-green-500" }
@@ -29,7 +40,6 @@ export default function ResultsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-4">
           <Link href="/dashboard" className="flex items-center gap-2">
@@ -43,7 +53,6 @@ export default function ResultsPage() {
 
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          {/* Results Card */}
           <Card className="mb-8 border-2 shadow-lg">
             <CardHeader className="text-center pb-2">
               <div className="mx-auto mb-4 w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center">
@@ -53,7 +62,6 @@ export default function ResultsPage() {
               <CardDescription className="text-base">Here's how you performed</CardDescription>
             </CardHeader>
             <CardContent className="space-y-8 pt-6">
-              {/* Score Display */}
               <div className="text-center space-y-4">
                 <div>
                   <div className="text-6xl font-bold text-foreground mb-2">
@@ -67,7 +75,6 @@ export default function ResultsPage() {
                 </div>
               </div>
 
-              {/* Progress Bar */}
               <div className="space-y-2">
                 <Progress value={percentage} className="h-3" />
                 <div className="flex justify-between text-sm text-muted-foreground">
@@ -77,7 +84,6 @@ export default function ResultsPage() {
                 </div>
               </div>
 
-              {/* Stats Grid */}
               <div className="grid md:grid-cols-3 gap-4">
                 <Card>
                   <CardContent className="pt-6 text-center">
@@ -110,7 +116,6 @@ export default function ResultsPage() {
             </CardContent>
           </Card>
 
-          {/* Analysis Card */}
           <Card className="mb-8">
             <CardHeader>
               <CardTitle>Performance Analysis</CardTitle>
@@ -143,6 +148,73 @@ export default function ResultsPage() {
               {percentage >= 75 && (
                 <div className="p-4 bg-accent/10 border border-accent/20 rounded-lg">
                   <p className="text-sm text-foreground">
+                    <strong>Great job!</strong> You've demonstrated strong understanding of this topic. Keep up the excellent work and challenge yourself with harder quizzes.
+                  </p>
+                </div>
+              )}
+
+              {percentage < 75 && percentage >= 50 && (
+                <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                  <p className="text-sm text-foreground">
+                    <strong>Good effort!</strong> You're making progress, but there's room for improvement. Review the topics you struggled with and try again.
+                  </p>
+                </div>
+              )}
+
+              {percentage < 50 && (
+                <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-lg">
+                  <p className="text-sm text-foreground">
+                    <strong>Keep learning!</strong> Consider reviewing the fundamentals and practicing more. Don't get discouraged - improvement comes with practice.
+                  </p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" asChild>
+              <Link href={`/quiz/${category}/${id}`}>
+                <RotateCcw className="mr-2 h-5 w-5" />
+                Retry Quiz
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link href={`/quiz/${category}`}>
+                <Target className="mr-2 h-5 w-5" />
+                More Quizzes
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/dashboard">
+                <Home className="mr-2 h-5 w-5" />
+                Back to Dashboard
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+"use client"
+import { useEffect, useState } from "react"
+import { useSearchParams, useRouter, useParams } from "next/navigation"
+import Link from "next/link"
+import db from "@/lib/db"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+
+export default function QuizResultsPage() {
+  const search = useSearchParams()
+  const router = useRouter()
+  const params = useParams()
+  const category = params.category as string
+  const id = params.id as string
+  const resultId = search?.get("resultId")
+  const [result, setResult] = useState<any | null>(null)
+
+
                     <strong>Great job!</strong> You've demonstrated strong understanding of this topic. Keep up the
                     excellent work and challenge yourself with harder quizzes.
                   </p>

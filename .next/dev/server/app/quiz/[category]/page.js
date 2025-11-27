@@ -1,6 +1,6 @@
 var R=require("../../../chunks/ssr/[turbopack]_runtime.js")("server/app/quiz/[category]/page.js")
-R.c("server/chunks/ssr/e00f8_6529c3d1._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__1ef8ea86._.js")
+R.c("server/chunks/ssr/e00f8_next_dist_e5d57e57._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__4b5ce17e._.js")
 R.c("server/chunks/ssr/e00f8_next_dist_2fb12401._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__7f148858._.js")
 R.c("server/chunks/ssr/e00f8_next_dist_client_components_builtin_global-error_2283606f.js")

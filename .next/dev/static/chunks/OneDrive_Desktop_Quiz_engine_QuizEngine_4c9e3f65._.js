@@ -1029,23 +1029,32 @@ function DashboardPage() {
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__["User"], {
-                                                            className: "mr-2 h-4 w-4"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 134,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            children: "Profile"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 135,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
+                                                    asChild: true,
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                        href: "/profile",
+                                                        className: "flex items-center w-full",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__["User"], {
+                                                                className: "mr-2 h-4 w-4"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
+                                                                lineNumber: 135,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                children: "Profile"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
+                                                                lineNumber: 136,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
+                                                        lineNumber: 134,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
                                                     lineNumber: 133,
                                                     columnNumber: 17
@@ -1056,25 +1065,25 @@ function DashboardPage() {
                                                             className: "mr-2 h-4 w-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 138,
+                                                            lineNumber: 140,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Settings"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 139,
+                                                            lineNumber: 141,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                    lineNumber: 137,
+                                                    lineNumber: 139,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuSeparator"], {}, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                    lineNumber: 141,
+                                                    lineNumber: 143,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
@@ -1084,20 +1093,20 @@ function DashboardPage() {
                                                             className: "mr-2 h-4 w-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 143,
+                                                            lineNumber: 145,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Log out"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 144,
+                                                            lineNumber: 146,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                    lineNumber: 142,
+                                                    lineNumber: 144,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
@@ -1140,7 +1149,7 @@ function DashboardPage() {
                                 children: welcomeCopy
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                lineNumber: 155,
+                                lineNumber: 157,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1148,13 +1157,13 @@ function DashboardPage() {
                                 children: user?.role ? `You're logged in as ${user.role}. Continue your learning journey and track your progress.` : "Continue your learning journey and track your progress."
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                lineNumber: 156,
+                                lineNumber: 158,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                        lineNumber: 154,
+                        lineNumber: 156,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1169,12 +1178,12 @@ function DashboardPage() {
                                             children: "Total Quizzes"
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                            lineNumber: 167,
+                                            lineNumber: 169,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 166,
+                                        lineNumber: 168,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1184,7 +1193,7 @@ function DashboardPage() {
                                                 children: "45"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 170,
+                                                lineNumber: 172,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1192,19 +1201,19 @@ function DashboardPage() {
                                                 children: "Completed"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 171,
+                                                lineNumber: 173,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 171,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                lineNumber: 165,
+                                lineNumber: 167,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1216,12 +1225,12 @@ function DashboardPage() {
                                             children: "Average Score"
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                            lineNumber: 176,
+                                            lineNumber: 178,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 175,
+                                        lineNumber: 177,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1231,7 +1240,7 @@ function DashboardPage() {
                                                 children: "82%"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 181,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1239,19 +1248,19 @@ function DashboardPage() {
                                                 children: "+5% from last week"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 180,
+                                                lineNumber: 182,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 178,
+                                        lineNumber: 180,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                lineNumber: 174,
+                                lineNumber: 176,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1263,12 +1272,12 @@ function DashboardPage() {
                                             children: "Current Streak"
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 187,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 184,
+                                        lineNumber: 186,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1278,7 +1287,7 @@ function DashboardPage() {
                                                 children: "7 days"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 188,
+                                                lineNumber: 190,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1286,19 +1295,19 @@ function DashboardPage() {
                                                 children: "Keep it up!"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 189,
+                                                lineNumber: 191,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 187,
+                                        lineNumber: 189,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                lineNumber: 183,
+                                lineNumber: 185,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1310,12 +1319,12 @@ function DashboardPage() {
                                             children: "Rank"
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                            lineNumber: 194,
+                                            lineNumber: 196,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 195,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1325,7 +1334,7 @@ function DashboardPage() {
                                                 children: "#142"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 197,
+                                                lineNumber: 199,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1333,25 +1342,25 @@ function DashboardPage() {
                                                 children: "Top 15%"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 198,
+                                                lineNumber: 200,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 196,
+                                        lineNumber: 198,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                lineNumber: 192,
+                                lineNumber: 194,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                        lineNumber: 164,
+                        lineNumber: 166,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1366,7 +1375,7 @@ function DashboardPage() {
                                             children: "Categories"
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                            lineNumber: 207,
+                                            lineNumber: 209,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1387,25 +1396,25 @@ function DashboardPage() {
                                                                                     className: `w-6 h-6 ${category.textColor}`
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                                    lineNumber: 215,
+                                                                                    lineNumber: 217,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                                lineNumber: 214,
+                                                                                lineNumber: 216,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                                                                 className: "w-5 h-5 text-muted-foreground"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                                lineNumber: 217,
+                                                                                lineNumber: 219,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                        lineNumber: 213,
+                                                                        lineNumber: 215,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
@@ -1413,7 +1422,7 @@ function DashboardPage() {
                                                                         children: category.name
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                        lineNumber: 219,
+                                                                        lineNumber: 221,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
@@ -1423,13 +1432,13 @@ function DashboardPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                        lineNumber: 220,
+                                                                        lineNumber: 222,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                lineNumber: 212,
+                                                                lineNumber: 214,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1444,7 +1453,7 @@ function DashboardPage() {
                                                                                     children: "Progress"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                                    lineNumber: 225,
+                                                                                    lineNumber: 227,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1455,13 +1464,13 @@ function DashboardPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                                    lineNumber: 226,
+                                                                                    lineNumber: 228,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 224,
+                                                                            lineNumber: 226,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$progress$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Progress"], {
@@ -1469,45 +1478,45 @@ function DashboardPage() {
                                                                             className: "h-2"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 228,
+                                                                            lineNumber: 230,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                    lineNumber: 223,
+                                                                    lineNumber: 225,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                lineNumber: 222,
+                                                                lineNumber: 224,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                        lineNumber: 211,
+                                                        lineNumber: 213,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, category.id, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                    lineNumber: 210,
+                                                    lineNumber: 212,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                            lineNumber: 208,
+                                            lineNumber: 210,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 208,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                lineNumber: 205,
+                                lineNumber: 207,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1525,27 +1534,27 @@ function DashboardPage() {
                                                                 className: "w-4 h-4 text-accent"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                lineNumber: 243,
+                                                                lineNumber: 244,
                                                                 columnNumber: 19
                                                             }, this),
                                                             "Profile Overview"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                        lineNumber: 242,
+                                                        lineNumber: 243,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                         children: "Personal snapshot based on your signup"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                        lineNumber: 246,
+                                                        lineNumber: 247,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 241,
+                                                lineNumber: 242,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1562,12 +1571,12 @@ function DashboardPage() {
                                                                         children: initials
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                        lineNumber: 253,
+                                                                        lineNumber: 254,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                    lineNumber: 252,
+                                                                    lineNumber: 253,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1577,7 +1586,7 @@ function DashboardPage() {
                                                                             children: user.name
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 256,
+                                                                            lineNumber: 257,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1587,26 +1596,26 @@ function DashboardPage() {
                                                                                     className: "w-3.5 h-3.5"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                                    lineNumber: 258,
+                                                                                    lineNumber: 259,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 user.email
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 257,
+                                                                            lineNumber: 258,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                    lineNumber: 255,
+                                                                    lineNumber: 256,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 251,
+                                                            lineNumber: 252,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1621,7 +1630,7 @@ function DashboardPage() {
                                                                             children: field === "yearClass" ? "Class" : field
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 268,
+                                                                            lineNumber: 269,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1629,19 +1638,19 @@ function DashboardPage() {
                                                                             children: field === "about" ? user[field] : user[field].replace("-", " ")
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 269,
+                                                                            lineNumber: 270,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, field, true, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                    lineNumber: 267,
+                                                                    lineNumber: 268,
                                                                     columnNumber: 27
                                                                 }, this);
                                                             })
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 263,
+                                                            lineNumber: 264,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1653,12 +1662,12 @@ function DashboardPage() {
                                                                 children: "Switch Account"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                lineNumber: 277,
+                                                                lineNumber: 278,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 276,
+                                                            lineNumber: 277,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
@@ -1670,7 +1679,7 @@ function DashboardPage() {
                                                             children: "Sign in to see personalized insights, resume quizzes, and sync progress across devices."
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 282,
+                                                            lineNumber: 283,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1681,29 +1690,29 @@ function DashboardPage() {
                                                                 children: "Sign In"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                lineNumber: 286,
+                                                                lineNumber: 287,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 285,
+                                                            lineNumber: 286,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                    lineNumber: 281,
+                                                    lineNumber: 282,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 248,
+                                                lineNumber: 249,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 240,
+                                        lineNumber: 241,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1714,20 +1723,20 @@ function DashboardPage() {
                                                         children: "Recent Scores"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                        lineNumber: 294,
+                                                        lineNumber: 295,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                         children: "Your latest quiz results"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                        lineNumber: 295,
+                                                        lineNumber: 296,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 293,
+                                                lineNumber: 294,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1744,7 +1753,7 @@ function DashboardPage() {
                                                                             children: score.quiz
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 304,
+                                                                            lineNumber: 305,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1756,13 +1765,13 @@ function DashboardPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 305,
+                                                                            lineNumber: 306,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                    lineNumber: 303,
+                                                                    lineNumber: 304,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1773,7 +1782,7 @@ function DashboardPage() {
                                                                             children: score.score
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 310,
+                                                                            lineNumber: 311,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1784,19 +1793,19 @@ function DashboardPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                            lineNumber: 311,
+                                                                            lineNumber: 312,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                    lineNumber: 309,
+                                                                    lineNumber: 310,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, index, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 299,
+                                                            lineNumber: 300,
                                                             columnNumber: 19
                                                         }, this)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1808,24 +1817,24 @@ function DashboardPage() {
                                                             children: "View All Results"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 316,
+                                                            lineNumber: 317,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                        lineNumber: 315,
+                                                        lineNumber: 316,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 297,
+                                                lineNumber: 298,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 292,
+                                        lineNumber: 293,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1835,12 +1844,12 @@ function DashboardPage() {
                                                     children: "Quick Actions"
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                    lineNumber: 324,
+                                                    lineNumber: 325,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 323,
+                                                lineNumber: 324,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1857,19 +1866,19 @@ function DashboardPage() {
                                                                     className: "mr-2 h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                    lineNumber: 329,
+                                                                    lineNumber: 330,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 "Practice Mode"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 328,
+                                                            lineNumber: 329,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                        lineNumber: 327,
+                                                        lineNumber: 328,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1883,19 +1892,19 @@ function DashboardPage() {
                                                                     className: "mr-2 h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                    lineNumber: 335,
+                                                                    lineNumber: 336,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 "Leaderboard"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 334,
+                                                            lineNumber: 335,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                        lineNumber: 333,
+                                                        lineNumber: 334,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1909,49 +1918,49 @@ function DashboardPage() {
                                                                     className: "mr-2 h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                                    lineNumber: 341,
+                                                                    lineNumber: 342,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 "Achievements"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                            lineNumber: 340,
+                                                            lineNumber: 341,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                        lineNumber: 339,
+                                                        lineNumber: 340,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                                lineNumber: 326,
+                                                lineNumber: 327,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                        lineNumber: 322,
+                                        lineNumber: 323,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                                lineNumber: 239,
+                                lineNumber: 240,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                        lineNumber: 203,
+                        lineNumber: 205,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/page.tsx",
-                lineNumber: 152,
+                lineNumber: 154,
                 columnNumber: 7
             }, this)
         ]

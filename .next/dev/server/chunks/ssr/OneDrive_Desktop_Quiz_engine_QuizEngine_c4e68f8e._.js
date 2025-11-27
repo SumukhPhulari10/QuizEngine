@@ -527,7 +527,15 @@ function TeacherDashboardPage() {
                                 className: "flex gap-2",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                                        children: "Create Quiz"
+                                        asChild: true,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                            href: "/dashboard/teacher/create-quiz",
+                                            children: "Create Quiz"
+                                        }, void 0, false, {
+                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
+                                            lineNumber: 76,
+                                            columnNumber: 15
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
                                         lineNumber: 75,
@@ -538,7 +546,7 @@ function TeacherDashboardPage() {
                                         children: "Assign Task"
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 76,
+                                        lineNumber: 78,
                                         columnNumber: 13
                                     }, this)
                                 ]
@@ -565,12 +573,12 @@ function TeacherDashboardPage() {
                                         children: initials
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 86,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                    lineNumber: 83,
+                                    lineNumber: 85,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -581,7 +589,7 @@ function TeacherDashboardPage() {
                                             children: user.name
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                            lineNumber: 87,
+                                            lineNumber: 89,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -589,13 +597,13 @@ function TeacherDashboardPage() {
                                             children: user.email
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                            lineNumber: 88,
+                                            lineNumber: 90,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                    lineNumber: 86,
+                                    lineNumber: 88,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -606,7 +614,7 @@ function TeacherDashboardPage() {
                                             children: user.role
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                            lineNumber: 91,
+                                            lineNumber: 93,
                                             columnNumber: 17
                                         }, this),
                                         user.branch && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -614,24 +622,24 @@ function TeacherDashboardPage() {
                                             children: user.branch
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 94,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                    lineNumber: 90,
+                                    lineNumber: 92,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                            lineNumber: 82,
+                            lineNumber: 84,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                        lineNumber: 81,
+                        lineNumber: 83,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -646,20 +654,20 @@ function TeacherDashboardPage() {
                                                 children: "Student Progress"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 101,
+                                                lineNumber: 103,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                 children: "Track students' marks and topic mastery"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 102,
+                                                lineNumber: 104,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 100,
+                                        lineNumber: 102,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -672,7 +680,7 @@ function TeacherDashboardPage() {
                                                         children: "Overall Average"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                        lineNumber: 106,
+                                                        lineNumber: 108,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -680,13 +688,13 @@ function TeacherDashboardPage() {
                                                         children: "--%"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                        lineNumber: 107,
+                                                        lineNumber: 109,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 105,
+                                                lineNumber: 107,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -696,7 +704,7 @@ function TeacherDashboardPage() {
                                                         children: "Quizzes Completed"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                        lineNumber: 110,
+                                                        lineNumber: 112,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -704,13 +712,13 @@ function TeacherDashboardPage() {
                                                         children: "--"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                        lineNumber: 111,
+                                                        lineNumber: 113,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 109,
+                                                lineNumber: 111,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -719,19 +727,19 @@ function TeacherDashboardPage() {
                                                 children: "View Students"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 113,
+                                                lineNumber: 115,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 104,
+                                        lineNumber: 106,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                lineNumber: 99,
+                                lineNumber: 101,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -743,20 +751,20 @@ function TeacherDashboardPage() {
                                                 children: "Quiz Scores"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 121,
+                                                lineNumber: 123,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                 children: "Recent quiz performance"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 122,
+                                                lineNumber: 124,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 120,
+                                        lineNumber: 122,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -767,7 +775,7 @@ function TeacherDashboardPage() {
                                                 children: "No recent attempts"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 125,
+                                                lineNumber: 127,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -776,19 +784,19 @@ function TeacherDashboardPage() {
                                                 children: "See Reports"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 126,
+                                                lineNumber: 128,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 124,
+                                        lineNumber: 126,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                lineNumber: 119,
+                                lineNumber: 121,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -800,20 +808,20 @@ function TeacherDashboardPage() {
                                                 children: "Achievements"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 134,
+                                                lineNumber: 136,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                 children: "Badges and milestones"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 135,
+                                                lineNumber: 137,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 133,
+                                        lineNumber: 135,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -824,7 +832,7 @@ function TeacherDashboardPage() {
                                                 children: "No achievements yet"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 138,
+                                                lineNumber: 140,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -833,25 +841,25 @@ function TeacherDashboardPage() {
                                                 children: "Manage"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 139,
+                                                lineNumber: 141,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 137,
+                                        lineNumber: 139,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                lineNumber: 132,
+                                lineNumber: 134,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                        lineNumber: 98,
+                        lineNumber: 100,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -865,20 +873,20 @@ function TeacherDashboardPage() {
                                                 children: "Assign Tasks"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 149,
+                                                lineNumber: 151,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                 children: "Create and assign tasks to classes/sections"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 150,
+                                                lineNumber: 152,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 148,
+                                        lineNumber: 150,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -894,7 +902,7 @@ function TeacherDashboardPage() {
                                                             children: "Task Title"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                            lineNumber: 155,
+                                                            lineNumber: 157,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -903,13 +911,13 @@ function TeacherDashboardPage() {
                                                             className: "focus-visible:ring-accent"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                            lineNumber: 156,
+                                                            lineNumber: 158,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                    lineNumber: 154,
+                                                    lineNumber: 156,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -920,7 +928,7 @@ function TeacherDashboardPage() {
                                                             children: "Assign to Class"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                            lineNumber: 159,
+                                                            lineNumber: 161,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -929,30 +937,30 @@ function TeacherDashboardPage() {
                                                             children: "Assign to Section"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                            lineNumber: 160,
+                                                            lineNumber: 162,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                    lineNumber: 158,
+                                                    lineNumber: 160,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                            lineNumber: 153,
+                                            lineNumber: 155,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 152,
+                                        lineNumber: 154,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                lineNumber: 147,
+                                lineNumber: 149,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -963,20 +971,20 @@ function TeacherDashboardPage() {
                                                 children: "Quiz Management"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 170,
+                                                lineNumber: 172,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
                                                 children: "Create, edit, and schedule quizzes"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 171,
+                                                lineNumber: 173,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 171,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -990,7 +998,7 @@ function TeacherDashboardPage() {
                                                         children: "New Quiz"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                        lineNumber: 175,
+                                                        lineNumber: 177,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -999,13 +1007,13 @@ function TeacherDashboardPage() {
                                                         children: "Question Bank"
                                                     }, void 0, false, {
                                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                        lineNumber: 176,
+                                                        lineNumber: 178,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 174,
+                                                lineNumber: 176,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1014,25 +1022,25 @@ function TeacherDashboardPage() {
                                                 children: "Schedule Exam"
                                             }, void 0, false, {
                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                                lineNumber: 180,
+                                                lineNumber: 182,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                        lineNumber: 173,
+                                        lineNumber: 175,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                                lineNumber: 168,
+                                lineNumber: 170,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/dashboard/teacher/page.tsx",
-                        lineNumber: 146,
+                        lineNumber: 148,
                         columnNumber: 9
                     }, this)
                 ]

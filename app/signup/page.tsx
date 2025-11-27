@@ -11,15 +11,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
 import { StoredUser, getStoredUsers, upsertUser } from "@/lib/profile-storage"
+import db from "@/lib/db"
 
 const PROFILE_REDIRECT_DELAY = 800
 
 export default function SignupPage() {
   const router = useRouter()
   const { toast } = useToast()
-  const [role, setRole] = useState<StoredUser["role"] | "">("")
-  const [branch, setBranch] = useState("")
-  const [yearClass, setYearClass] = useState("")
+  // sensible defaults to reduce validation friction for users
+  const [role, setRole] = useState<StoredUser["role"] | "">("student")
+  const [branch, setBranch] = useState("cse")
+  const [yearClass, setYearClass] = useState("first-year")
   const [section, setSection] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [fullName, setFullName] = useState("")
@@ -70,6 +72,14 @@ export default function SignupPage() {
     }
 
     upsertUser(profile)
+    // keep role-separated storage in sync
+    try {
+      if (profile.role === "student") db.upsertStudent(profile)
+      else if (profile.role === "teacher") db.upsertTeacher(profile)
+      else if (profile.role === "admin") db.upsertAdmin(profile)
+    } catch (err) {
+      // non-critical: continue
+    }
     toast({
       title: "Account created",
       description: "You can now sign in with your credentials.",
@@ -121,6 +131,7 @@ export default function SignupPage() {
                   required
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
+                  autoComplete="off"
                 />
               </div>
               <div className="space-y-2">
@@ -132,6 +143,7 @@ export default function SignupPage() {
                   required
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
+                  autoComplete="new-password"
                 />
               </div>
               <div className="space-y-2">

@@ -10,60 +10,52 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Cpu, Clock, ChevronRight, Brain } from "lucide-react"
 
-// Mock quiz data
-const quizData = {
-  id: 1,
-  title: "Data Structures Fundamentals",
-  questions: [
-    {
-      id: 1,
-      question: "What is the time complexity of accessing an element in an array by index?",
-      options: ["O(1)", "O(n)", "O(log n)", "O(n²)"],
-      correctAnswer: 0,
-    },
-    {
-      id: 2,
-      question: "Which data structure uses LIFO (Last In First Out) principle?",
-      options: ["Queue", "Stack", "Linked List", "Tree"],
-      correctAnswer: 1,
-    },
-    {
-      id: 3,
-      question: "What is the primary advantage of a linked list over an array?",
-      options: ["Faster access time", "Dynamic size", "Better cache locality", "Lower memory usage"],
-      correctAnswer: 1,
-    },
-    {
-      id: 4,
-      question: "In a binary search tree, what is the maximum number of children a node can have?",
-      options: ["1", "2", "3", "Unlimited"],
-      correctAnswer: 1,
-    },
-    {
-      id: 5,
-      question: "Which operation is NOT typically O(1) for a hash table?",
-      options: ["Insert", "Delete", "Search", "Resize"],
-      correctAnswer: 3,
-    },
-  ],
-}
+import db from "@/lib/db"
+import { getActiveUser } from "@/lib/profile-storage"
+
+// fallback mock questions if a quiz has no questions yet
+const FALLBACK_QUESTIONS = [
+  {
+    id: 1,
+    question: "What is the time complexity of accessing an element in an array by index?",
+    options: ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+    correctAnswer: 0,
+  },
+  {
+    id: 2,
+    question: "Which data structure uses LIFO (Last In First Out) principle?",
+    options: ["Queue", "Stack", "Linked List", "Tree"],
+    correctAnswer: 1,
+  },
+]
 
 export default function QuizPage() {
   const router = useRouter()
   const params = useParams()
   const category = params.category as string
   const id = params.id as string
-
+  const [quizData, setQuizData] = useState<any | null>(null)
   const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>(
-    new Array(quizData.questions.length).fill(null),
-  )
+  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>([])
   const [timeLeft, setTimeLeft] = useState(1800) // 30 minutes in seconds
   const answersRef = useRef(selectedAnswers)
 
   useEffect(() => {
     answersRef.current = selectedAnswers
   }, [selectedAnswers])
+
+  useEffect(() => {
+    const all = db.getQuizzes()
+    const quiz = all.find((q) => q.id === id)
+    if (quiz) {
+      setQuizData(quiz)
+      const questions = (quiz.questions && quiz.questions.length ? quiz.questions : FALLBACK_QUESTIONS) as any[]
+      setSelectedAnswers(new Array(questions.length).fill(null))
+    } else {
+      setQuizData(null)
+      setSelectedAnswers([])
+    }
+  }, [id])
 
   const handleAnswerSelect = (answerIndex: number) => {
     const newAnswers = [...selectedAnswers]
@@ -72,7 +64,8 @@ export default function QuizPage() {
   }
 
   const handleNext = () => {
-    if (currentQuestion < quizData.questions.length - 1) {
+    const questions = (quizData?.questions && quizData.questions.length ? quizData.questions : FALLBACK_QUESTIONS) as any[]
+    if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
     }
   }
@@ -86,16 +79,34 @@ export default function QuizPage() {
   const handleSubmit = useCallback(
     (answers?: (number | null)[]) => {
       const sourceAnswers = answers ?? answersRef.current
+      const questions = (quizData?.questions && quizData.questions.length ? quizData.questions : FALLBACK_QUESTIONS) as any[]
       const score = sourceAnswers.reduce<number>((acc, answer, index) => {
-        if (answer === quizData.questions[index].correctAnswer) {
+        if (answer === questions[index].correctAnswer) {
           return acc + 1
         }
         return acc
       }, 0)
 
-      router.push(`/quiz/${category}/${id}/results?score=${score}&total=${quizData.questions.length}`)
+      // persist result
+      try {
+        const active = getActiveUser()
+        const resultId = `${id}-${Date.now()}`
+        db.addResult({
+          id: resultId,
+          quizId: id,
+          quizTitle: quizData?.title ?? id,
+          userEmail: active?.email ?? "guest",
+          score,
+          total: questions.length,
+          takenAt: new Date().toISOString(),
+        })
+        router.push(`/quiz/${category}/${id}/results?resultId=${resultId}`)
+      } catch (err) {
+        // fallback redirect
+        router.push(`/quiz/${category}/${id}/results?score=${score}&total=${questions.length}`)
+      }
     },
-    [category, id, router],
+    [category, id, router, quizData],
   )
 
   // Timer countdown
@@ -119,8 +130,9 @@ export default function QuizPage() {
     return `${mins}:${secs.toString().padStart(2, "0")}`
   }
 
-  const progress = ((currentQuestion + 1) / quizData.questions.length) * 100
-  const question = quizData.questions[currentQuestion]
+  const questions = (quizData?.questions && quizData.questions.length ? quizData.questions : FALLBACK_QUESTIONS) as any[]
+  const progress = questions.length ? ((currentQuestion + 1) / questions.length) * 100 : 0
+  const question = questions[currentQuestion]
 
   return (
     <div className="min-h-screen bg-background">
@@ -148,7 +160,7 @@ export default function QuizPage() {
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">
-                Question {currentQuestion + 1} of {quizData.questions.length}
+                Question {currentQuestion + 1} of {questions.length}
               </span>
               <span className="font-medium text-foreground">{Math.round(progress)}%</span>
             </div>
@@ -162,14 +174,14 @@ export default function QuizPage() {
         <div className="max-w-3xl mx-auto">
           <Card className="mb-6">
             <CardContent className="pt-6">
-              <h2 className="text-2xl font-bold text-foreground mb-8 text-balance">{question.question}</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-8 text-balance">{question?.question ?? "Question not available."}</h2>
 
               <RadioGroup
                 value={selectedAnswers[currentQuestion]?.toString() ?? ""}
                 onValueChange={(value) => handleAnswerSelect(Number.parseInt(value))}
               >
                 <div className="space-y-3">
-                  {question.options.map((option, index) => (
+                  {(question?.options || []).map((option: string, index: number) => (
                     <div
                       key={index}
                       className={`flex items-center space-x-3 p-4 rounded-lg border-2 transition-all cursor-pointer hover:bg-accent/5 ${
@@ -194,7 +206,7 @@ export default function QuizPage() {
               Previous
             </Button>
 
-            {currentQuestion === quizData.questions.length - 1 ? (
+            {currentQuestion === questions.length - 1 ? (
               <Button
                 onClick={() => handleSubmit(selectedAnswers)}
                 disabled={selectedAnswers.some((answer) => answer === null)}
@@ -213,8 +225,8 @@ export default function QuizPage() {
           {/* Question Navigation */}
           <div className="mt-8">
             <h3 className="text-sm font-medium text-muted-foreground mb-3">Question Navigation</h3>
-            <div className="flex flex-wrap gap-2">
-              {quizData.questions.map((_, index) => (
+              <div className="flex flex-wrap gap-2">
+              {questions.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentQuestion(index)}

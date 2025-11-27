@@ -130,9 +130,11 @@ export default function DashboardPage() {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <User className="mr-2 h-4 w-4" />
-                  <span>Profile</span>
+                <DropdownMenuItem asChild>
+                  <Link href="/profile" className="flex items-center w-full">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Settings className="mr-2 h-4 w-4" />
@@ -235,7 +237,6 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Recent Scores Sidebar */}
           <div className="space-y-6">
             <Card className="shadow-lg">
               <CardHeader>

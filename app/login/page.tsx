@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Cpu, Eye, EyeOff, ShieldCheck } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { findUserByCredentials, setActiveUser } from "@/lib/profile-storage"
+import db from "@/lib/db"
 
 function LoginContent() {
   const router = useRouter()
@@ -49,6 +50,16 @@ function LoginContent() {
     const { password: _pw, ...profile } = user
     setActiveUser({ ...profile, lastLogin: new Date().toISOString() })
 
+    // For students: reset their personal results/progress on sign-in to provide
+    // a fresh start as requested. This clears any stored attempts for this user.
+    if (profile.role === "student") {
+      try {
+        db.clearResultsByEmail(profile.email)
+      } catch (err) {
+        // swallow — non-critical
+      }
+    }
+
     toast({
       title: "Welcome back",
       description: `${profile.name} is signed in as ${profile.role}.`,
@@ -83,15 +94,16 @@ function LoginContent() {
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="name@example.com"
-                  required
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  autoComplete="email"
-                />
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="name@example.com"
+                    required
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    autoComplete="off"
+                  />
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -103,12 +115,13 @@ function LoginContent() {
                 <div className="relative">
                   <Input
                     id="password"
+                    name="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
                     required
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
-                    autoComplete="current-password"
+                    autoComplete="off"
                   />
                   <button
                     type="button"
