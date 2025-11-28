@@ -93,60 +93,72 @@ export default function SettingsPage() {
 
   const onUpdateEmail = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!userId) return
     setEmailMsg("")
     setEmailLoading(true)
-    const { error: authErr } = await supabase.auth.updateUser({ email: newEmail })
-    if (authErr) {
-      setEmailMsg(authErr.message)
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+      setEmailMsg("Not authenticated")
       setEmailLoading(false)
       return
     }
-    const { error: profileErr } = await supabase
+    const { error } = await supabase.auth.updateUser({ email: newEmail })
+    if (error) {
+      alert(error.message)
+      setEmailMsg(error.message)
+      setEmailLoading(false)
+      return
+    }
+    await supabase
       .from("profiles")
       .update({ email: newEmail })
-      .eq("id", userId)
-    if (profileErr) setEmailMsg(profileErr.message)
-    else {
-      setEmailMsg("Email updated! Please sign in again using your new email.")
-      router.refresh()
-    }
+      .eq("id", user.id)
+    alert("Email updated successfully!")
     setEmailLoading(false)
   }
 
   const onUpdatePassword = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!userId) return
     if (!newPassword || newPassword !== confirmPassword) {
       setPassMsg("Passwords do not match.")
       return
     }
     setPassMsg("")
     setPassLoading(true)
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+      setPassMsg("Not authenticated")
+      setPassLoading(false)
+      return
+    }
     const { error } = await supabase.auth.updateUser({ password: newPassword })
-    if (error) setPassMsg(error.message)
-    else setPassMsg("Password updated successfully")
+    if (error) {
+      alert(error.message)
+      setPassMsg(error.message)
+    } else {
+      alert("Password updated successfully!")
+      setPassMsg("Password updated successfully")
+    }
     setPassLoading(false)
     setNewPassword("")
     setConfirmPassword("")
   }
 
   const onDeleteAccount = async () => {
-    if (!userId) return
-    const ok = window.confirm("Are you sure you want to delete your account? This cannot be undone.")
-    if (!ok) return
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
     setDeleteMsg("")
     setDeleteLoading(true)
     try {
-      const res = await fetch("/api/delete-account", { method: "POST" })
-      if (!res.ok) {
-        const text = await res.text()
-        throw new Error(text || "Failed to delete account")
+      await supabase.from("profiles").delete().eq("id", user.id)
+      const { error } = await supabase.auth.admin.deleteUser(user.id)
+      if (error) {
+        alert("Admin delete requires service role — set up later.")
+        setDeleteMsg(error.message)
+      } else {
+        alert("Account deleted successfully!")
+        setDeleteMsg("Account deleted successfully")
+        router.push("/")
       }
-      setDeleteMsg("Account deleted")
-      router.push("/")
-    } catch (err: any) {
-      setDeleteMsg(err.message || "Failed to delete account")
     } finally {
       setDeleteLoading(false)
     }
