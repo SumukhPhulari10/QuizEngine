@@ -72,7 +72,7 @@ function LoginContent() {
       description: `${profile.name} is signed in as ${profile.role}.`,
     })
 
-    const destination = profile.role === "teacher" ? "/dashboard/teacher" : "/dashboard"
+    const destination = profile.role === "teacher" ? "/dashboard/teacher" : profile.role === "admin" ? "/dashboard/admin" : "/dashboard"
     setTimeout(() => {
       router.push(destination)
       setIsLoading(false)

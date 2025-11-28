@@ -1028,10 +1028,19 @@ function SignupPage() {
     const resetOptionalFields = ()=>{
         setSection("");
     };
+    const isAdmin = role === "admin";
     const handleSubmit = (e)=>{
         e.preventDefault();
         if (isSubmitting) return;
-        if (!role || !branch || !yearClass) {
+        if (!role) {
+            toast({
+                title: "Missing details",
+                description: "Please select your role to continue.",
+                variant: "destructive"
+            });
+            return;
+        }
+        if (!isAdmin && (!branch || !yearClass)) {
             toast({
                 title: "Missing details",
                 description: "Please select your role, branch, and class to continue.",
@@ -1045,9 +1054,9 @@ function SignupPage() {
             email: email.trim(),
             password: password.trim(),
             role,
-            branch,
-            yearClass,
-            section: section || undefined,
+            branch: isAdmin ? "admin" : branch,
+            yearClass: isAdmin ? "admin" : yearClass,
+            section: isAdmin ? undefined : section || undefined,
             about: about.trim() || undefined,
             createdAt: new Date().toISOString()
         };
@@ -1086,7 +1095,7 @@ function SignupPage() {
                 className: "absolute inset-0 bg-gradient-to-br from-accent/10 to-secondary/10 blur-3xl"
             }, void 0, false, {
                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                lineNumber: 95,
+                lineNumber: 106,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1102,12 +1111,12 @@ function SignupPage() {
                                     className: "w-6 h-6 text-primary-foreground"
                                 }, void 0, false, {
                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                    lineNumber: 101,
+                                    lineNumber: 112,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                lineNumber: 100,
+                                lineNumber: 111,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1115,13 +1124,13 @@ function SignupPage() {
                                 children: "QuizEngine"
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                lineNumber: 103,
+                                lineNumber: 114,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                        lineNumber: 99,
+                        lineNumber: 110,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -1135,20 +1144,20 @@ function SignupPage() {
                                         children: "Create Account"
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                        lineNumber: 108,
+                                        lineNumber: 119,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardDescription"], {
                                         children: "Join thousands of engineering students"
                                     }, void 0, false, {
                                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                        lineNumber: 109,
+                                        lineNumber: 120,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                lineNumber: 107,
+                                lineNumber: 118,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1165,7 +1174,7 @@ function SignupPage() {
                                                     children: "Full Name"
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 115,
+                                                    lineNumber: 126,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -1175,36 +1184,6 @@ function SignupPage() {
                                                     required: true,
                                                     value: fullName,
                                                     onChange: (event)=>setFullName(event.target.value)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 116,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 114,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "space-y-2",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                    htmlFor: "email",
-                                                    children: "Email"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 126,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
-                                                    id: "email",
-                                                    type: "email",
-                                                    placeholder: "name@example.com",
-                                                    required: true,
-                                                    value: email,
-                                                    onChange: (event)=>setEmail(event.target.value),
-                                                    autoComplete: "off"
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
                                                     lineNumber: 127,
@@ -1220,11 +1199,41 @@ function SignupPage() {
                                             className: "space-y-2",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
+                                                    htmlFor: "email",
+                                                    children: "Email"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                    lineNumber: 137,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
+                                                    id: "email",
+                                                    type: "email",
+                                                    placeholder: "name@example.com",
+                                                    required: true,
+                                                    value: email,
+                                                    onChange: (event)=>setEmail(event.target.value),
+                                                    autoComplete: "off"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                    lineNumber: 138,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                            lineNumber: 136,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "space-y-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                                     htmlFor: "password",
                                                     children: "Password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 138,
+                                                    lineNumber: 149,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -1237,13 +1246,13 @@ function SignupPage() {
                                                     autoComplete: "new-password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 139,
+                                                    lineNumber: 150,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 137,
+                                            lineNumber: 148,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1253,14 +1262,22 @@ function SignupPage() {
                                                     children: "Role"
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 150,
+                                                    lineNumber: 161,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
                                                     value: role,
                                                     onValueChange: (value)=>{
                                                         setRole(value);
+                                                        if (value === "admin") {
+                                                            setBranch("admin");
+                                                            setYearClass("admin");
+                                                            resetOptionalFields();
+                                                            return;
+                                                        }
                                                         resetOptionalFields();
+                                                        if (branch === "admin") setBranch("cse");
+                                                        if (yearClass === "admin") setYearClass("first-year");
                                                     },
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
@@ -1269,12 +1286,12 @@ function SignupPage() {
                                                                 placeholder: "Select role"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                lineNumber: 159,
+                                                                lineNumber: 178,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 158,
+                                                            lineNumber: 177,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1284,7 +1301,7 @@ function SignupPage() {
                                                                     children: "Student"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 162,
+                                                                    lineNumber: 181,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1292,7 +1309,7 @@ function SignupPage() {
                                                                     children: "Teacher"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 163,
+                                                                    lineNumber: 182,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1300,214 +1317,218 @@ function SignupPage() {
                                                                     children: "Admin"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 164,
+                                                                    lineNumber: 183,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 161,
+                                                            lineNumber: 180,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 151,
+                                                    lineNumber: 162,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 149,
+                                            lineNumber: 160,
                                             columnNumber: 15
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "space-y-2",
+                                        !isAdmin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                             children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                    children: "Branch"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 170,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
-                                                    value: branch,
-                                                    onValueChange: setBranch,
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-2",
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                                            className: "w-full",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {
-                                                                placeholder: "Select branch"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                lineNumber: 173,
-                                                                columnNumber: 21
-                                                            }, this)
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
+                                                            children: "Branch"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 172,
-                                                            columnNumber: 19
+                                                            lineNumber: 191,
+                                                            columnNumber: 21
                                                         }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
+                                                            value: branch,
+                                                            onValueChange: setBranch,
                                                             children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "cse",
-                                                                    children: "CSE"
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                                    className: "w-full",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                                        placeholder: "Select branch"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                        lineNumber: 194,
+                                                                        columnNumber: 25
+                                                                    }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 176,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 193,
+                                                                    columnNumber: 23
                                                                 }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "it",
-                                                                    children: "IT"
-                                                                }, void 0, false, {
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "cse",
+                                                                            children: "CSE"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 197,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "it",
+                                                                            children: "IT"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 198,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "ece",
+                                                                            children: "ECE"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 199,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "mechanical",
+                                                                            children: "Mechanical"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 200,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "civil",
+                                                                            children: "Civil"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 201,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "ai-ml",
+                                                                            children: "AI/ML"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 202,
+                                                                            columnNumber: 25
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 177,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "ece",
-                                                                    children: "ECE"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 178,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "mechanical",
-                                                                    children: "Mechanical"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 179,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "civil",
-                                                                    children: "Civil"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 180,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "ai-ml",
-                                                                    children: "AI/ML"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 181,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 196,
+                                                                    columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 175,
-                                                            columnNumber: 19
+                                                            lineNumber: 192,
+                                                            columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 171,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 169,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "space-y-2",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                                                    children: "Class"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 187,
-                                                    columnNumber: 17
+                                                    lineNumber: 190,
+                                                    columnNumber: 19
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
-                                                    value: yearClass,
-                                                    onValueChange: (value)=>{
-                                                        setYearClass(value);
-                                                        resetOptionalFields();
-                                                    },
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-2",
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                                            className: "w-full",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {
-                                                                placeholder: "Select class"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                lineNumber: 196,
-                                                                columnNumber: 21
-                                                            }, this)
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
+                                                            children: "Class"
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 195,
-                                                            columnNumber: 19
+                                                            lineNumber: 208,
+                                                            columnNumber: 21
                                                         }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
+                                                            value: yearClass,
+                                                            onValueChange: (value)=>{
+                                                                setYearClass(value);
+                                                                resetOptionalFields();
+                                                            },
                                                             children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "first-year",
-                                                                    children: "First Year"
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                                    className: "w-full",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                                        placeholder: "Select class"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                        lineNumber: 217,
+                                                                        columnNumber: 25
+                                                                    }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 199,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 216,
+                                                                    columnNumber: 23
                                                                 }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "second-year",
-                                                                    children: "Second Year"
-                                                                }, void 0, false, {
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "first-year",
+                                                                            children: "First Year"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 220,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "second-year",
+                                                                            children: "Second Year"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 221,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "third-year",
+                                                                            children: "Third Year"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 222,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "btech",
+                                                                            children: "BTech"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
+                                                                            lineNumber: 223,
+                                                                            columnNumber: 25
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 200,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "third-year",
-                                                                    children: "Third Year"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 201,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "btech",
-                                                                    children: "BTech"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 202,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 219,
+                                                                    columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 198,
-                                                            columnNumber: 19
+                                                            lineNumber: 209,
+                                                            columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 188,
-                                                    columnNumber: 17
+                                                    lineNumber: 207,
+                                                    columnNumber: 19
                                                 }, this)
                                             ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 186,
-                                            columnNumber: 15
-                                        }, this),
-                                        yearClass === "second-year" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        }, void 0, true),
+                                        !isAdmin && yearClass === "second-year" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "space-y-2",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                                     children: "Section (Second Year)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 209,
+                                                    lineNumber: 232,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1520,12 +1541,12 @@ function SignupPage() {
                                                                 placeholder: "Select section"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                lineNumber: 212,
+                                                                lineNumber: 235,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 211,
+                                                            lineNumber: 234,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1535,7 +1556,7 @@ function SignupPage() {
                                                                     children: "SY-A"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 215,
+                                                                    lineNumber: 238,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1543,7 +1564,7 @@ function SignupPage() {
                                                                     children: "SY-B"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 216,
+                                                                    lineNumber: 239,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1551,7 +1572,7 @@ function SignupPage() {
                                                                     children: "SY-C"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 217,
+                                                                    lineNumber: 240,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1559,35 +1580,35 @@ function SignupPage() {
                                                                     children: "SY-AI/ML"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 218,
+                                                                    lineNumber: 241,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 214,
+                                                            lineNumber: 237,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 210,
+                                                    lineNumber: 233,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 208,
+                                            lineNumber: 231,
                                             columnNumber: 17
                                         }, this),
-                                        yearClass === "third-year" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        !isAdmin && yearClass === "third-year" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "space-y-2",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                                     children: "Section (Third Year)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 226,
+                                                    lineNumber: 249,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1600,12 +1621,12 @@ function SignupPage() {
                                                                 placeholder: "Select section"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                lineNumber: 229,
+                                                                lineNumber: 252,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 228,
+                                                            lineNumber: 251,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1615,7 +1636,7 @@ function SignupPage() {
                                                                     children: "TY-A"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 232,
+                                                                    lineNumber: 255,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1623,25 +1644,25 @@ function SignupPage() {
                                                                     children: "TY-B"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                                    lineNumber: 233,
+                                                                    lineNumber: 256,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                            lineNumber: 231,
+                                                            lineNumber: 254,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 227,
+                                                    lineNumber: 250,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 225,
+                                            lineNumber: 248,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1652,7 +1673,7 @@ function SignupPage() {
                                                     children: "Personal Bio"
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 239,
+                                                    lineNumber: 262,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -1663,13 +1684,13 @@ function SignupPage() {
                                                     rows: 4
                                                 }, void 0, false, {
                                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                                    lineNumber: 240,
+                                                    lineNumber: 263,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 238,
+                                            lineNumber: 261,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1680,18 +1701,18 @@ function SignupPage() {
                                             children: isSubmitting ? "Creating profile..." : "Create Account"
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 249,
+                                            lineNumber: 272,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                    lineNumber: 113,
+                                    lineNumber: 124,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                lineNumber: 111,
+                                lineNumber: 122,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardFooter"], {
@@ -1707,24 +1728,24 @@ function SignupPage() {
                                             children: "Sign in"
                                         }, void 0, false, {
                                             fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                            lineNumber: 257,
+                                            lineNumber: 280,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                    lineNumber: 255,
+                                    lineNumber: 278,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                lineNumber: 254,
+                                lineNumber: 277,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                        lineNumber: 106,
+                        lineNumber: 117,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$OneDrive$2f$Desktop$2f$Quiz_engine$2f$QuizEngine$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1738,7 +1759,7 @@ function SignupPage() {
                                 children: "Terms"
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                lineNumber: 266,
+                                lineNumber: 289,
                                 columnNumber: 11
                             }, this),
                             " ",
@@ -1750,25 +1771,25 @@ function SignupPage() {
                                 children: "Privacy Policy"
                             }, void 0, false, {
                                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                                lineNumber: 270,
+                                lineNumber: 293,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                        lineNumber: 264,
+                        lineNumber: 287,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-                lineNumber: 97,
+                lineNumber: 108,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/OneDrive/Desktop/Quiz_engine/QuizEngine/app/signup/page.tsx",
-        lineNumber: 94,
+        lineNumber: 105,
         columnNumber: 5
     }, this);
 }

@@ -16,18 +16,29 @@ import {
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 // Using native confirm for prompts; dialog UI is available at components/ui/dialog if we want to upgrade
-import { ActiveUser, getActiveUser, setActiveUser, getStoredUsers, upsertUser, clearActiveUser } from "@/lib/profile-storage"
-import db, { getAllUsers, getResultsByEmail, updateUser } from "@/lib/db"
+import { ActiveUser, StoredUser, getActiveUser, setActiveUser, getStoredUsers, upsertUser, clearActiveUser } from "@/lib/profile-storage"
+import db, { getAllUsers, getResultsByEmail, getTeachers, updateUser } from "@/lib/db"
+import { useToast } from "@/components/ui/use-toast"
  
 
 export default function AdminDashboardPage() {
   const router = useRouter()
+  const { toast } = useToast()
   const [activeUser] = useState<ActiveUser | null>(() => getActiveUser())
   const [users, setUsers] = useState(() => getAllUsers())
+  const [teachers, setTeachers] = useState(() => getTeachers())
   const [expandedEmail, setExpandedEmail] = useState<string | null>(null)
   const [editingEmail, setEditingEmail] = useState<string | null>(null)
   const [editingData, setEditingData] = useState<any>(null)
   const [filter, setFilter] = useState("")
+  const [newTeacher, setNewTeacher] = useState({
+    name: "",
+    email: "",
+    password: "",
+    branch: "cse",
+    yearClass: "first-year",
+    section: "",
+  })
 
   useEffect(() => {
     if (!activeUser || activeUser.role !== "admin") {
@@ -56,6 +67,80 @@ export default function AdminDashboardPage() {
       return
     }
     setUsers(getAllUsers())
+  }
+
+  const resetTeacherForm = () => {
+    setNewTeacher({
+      name: "",
+      email: "",
+      password: "",
+      branch: "cse",
+      yearClass: "first-year",
+      section: "",
+    })
+  }
+
+  const handleCreateTeacher = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const trimmed = {
+      name: newTeacher.name.trim(),
+      email: newTeacher.email.trim(),
+      password: newTeacher.password.trim(),
+      branch: newTeacher.branch,
+      yearClass: newTeacher.yearClass,
+      section: newTeacher.section.trim(),
+    }
+
+    if (!trimmed.name || !trimmed.email || !trimmed.password) {
+      toast({
+        title: "Missing details",
+        description: "Please provide name, email, and password for the teacher.",
+        variant: "destructive",
+      })
+      return
+    }
+
+    const exists = getStoredUsers().some((user) => user.email.toLowerCase() === trimmed.email.toLowerCase())
+    if (exists) {
+      toast({
+        title: "Account exists",
+        description: "A user with that email already exists.",
+        variant: "destructive",
+      })
+      return
+    }
+
+    const teacherProfile: StoredUser = {
+      name: trimmed.name,
+      email: trimmed.email,
+      password: trimmed.password,
+      role: "teacher",
+      branch: trimmed.branch,
+      yearClass: trimmed.yearClass,
+      section: trimmed.section || undefined,
+      createdAt: new Date().toISOString(),
+    }
+
+    upsertUser(teacherProfile)
+    db.upsertTeacher(teacherProfile)
+    setTeachers(getTeachers())
+    setUsers(getAllUsers())
+    resetTeacherForm()
+    toast({
+      title: "Teacher added",
+      description: `${teacherProfile.name} now has teacher access.`,
+    })
+  }
+
+  const handleDeleteTeacher = (email: string) => {
+    if (!confirm(`Remove teacher ${email}? This will delete their account.`)) return
+    db.deleteUser(email)
+    setTeachers(getTeachers())
+    setUsers(getAllUsers())
+    toast({
+      title: "Teacher removed",
+      description: `${email} no longer has access.`,
+    })
   }
 
   const handleClearResults = (email: string) => {
@@ -127,8 +212,8 @@ export default function AdminDashboardPage() {
       </header>
 
       <main className="container mx-auto px-4 py-8 space-y-6">
-        <div className="grid md:grid-cols-5 gap-4">
-          <Card className="md:col-span-3">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <Card className="md:col-span-2 lg:col-span-3">
             <CardHeader>
               <CardTitle>All Users</CardTitle>
               <CardDescription>Manage students, teachers and admins</CardDescription>
@@ -268,7 +353,78 @@ export default function AdminDashboardPage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="md:col-span-2 lg:col-span-2">
+            <CardHeader>
+              <CardTitle>Manage Teachers</CardTitle>
+              <CardDescription>Create or remove teacher accounts</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <form className="space-y-3" onSubmit={handleCreateTeacher}>
+                <Input placeholder="Full name" value={newTeacher.name} onChange={(e) => setNewTeacher((prev) => ({ ...prev, name: e.target.value }))} />
+                <Input type="email" placeholder="Email" value={newTeacher.email} onChange={(e) => setNewTeacher((prev) => ({ ...prev, email: e.target.value }))} />
+                <Input type="password" placeholder="Temporary password" value={newTeacher.password} onChange={(e) => setNewTeacher((prev) => ({ ...prev, password: e.target.value }))} />
+                <div className="grid grid-cols-2 gap-2">
+                  <label className="text-xs font-medium text-muted-foreground flex flex-col gap-1">
+                    Branch
+                    <select
+                      className="rounded-md border border-input bg-background px-2 py-2 text-sm"
+                      value={newTeacher.branch}
+                      onChange={(e) => setNewTeacher((prev) => ({ ...prev, branch: e.target.value }))}
+                    >
+                      <option value="cse">CSE</option>
+                      <option value="it">IT</option>
+                      <option value="ece">ECE</option>
+                      <option value="mechanical">Mechanical</option>
+                      <option value="civil">Civil</option>
+                      <option value="ai-ml">AI/ML</option>
+                    </select>
+                  </label>
+                  <label className="text-xs font-medium text-muted-foreground flex flex-col gap-1">
+                    Class
+                    <select
+                      className="rounded-md border border-input bg-background px-2 py-2 text-sm"
+                      value={newTeacher.yearClass}
+                      onChange={(e) => setNewTeacher((prev) => ({ ...prev, yearClass: e.target.value }))}
+                    >
+                      <option value="first-year">First Year</option>
+                      <option value="second-year">Second Year</option>
+                      <option value="third-year">Third Year</option>
+                      <option value="btech">BTech</option>
+                    </select>
+                  </label>
+                </div>
+                <Input placeholder="Section (optional)" value={newTeacher.section} onChange={(e) => setNewTeacher((prev) => ({ ...prev, section: e.target.value }))} />
+                <Button type="submit" className="w-full">
+                  Add Teacher
+                </Button>
+              </form>
+
+              <div>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-semibold">Active Teachers</h3>
+                  <Button size="sm" variant="ghost" onClick={() => setTeachers(getTeachers())}>
+                    Refresh
+                  </Button>
+                </div>
+                <div className="mt-3 space-y-2 max-h-64 overflow-y-auto pr-1">
+                  {teachers.length === 0 && <p className="text-sm text-muted-foreground">No teachers yet.</p>}
+                  {teachers.map((teacher) => (
+                    <div key={teacher.email} className="flex items-center justify-between rounded-md border border-border px-3 py-2">
+                      <div>
+                        <p className="text-sm font-medium">{teacher.name}</p>
+                        <p className="text-xs text-muted-foreground">{teacher.email}</p>
+                      </div>
+                      <Button size="sm" variant="destructive" onClick={() => handleDeleteTeacher(teacher.email)}>
+                        Delete
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="md:col-span-2 lg:col-span-2">
             <CardHeader>
               <CardTitle>Platform Summary</CardTitle>
               <CardDescription>Quick stats</CardDescription>

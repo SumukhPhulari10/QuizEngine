@@ -33,11 +33,22 @@ export default function SignupPage() {
     setSection("")
   }
 
+  const isAdmin = role === "admin"
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (isSubmitting) return
 
-    if (!role || !branch || !yearClass) {
+    if (!role) {
+      toast({
+        title: "Missing details",
+        description: "Please select your role to continue.",
+        variant: "destructive",
+      })
+      return
+    }
+
+    if (!isAdmin && (!branch || !yearClass)) {
       toast({
         title: "Missing details",
         description: "Please select your role, branch, and class to continue.",
@@ -52,9 +63,9 @@ export default function SignupPage() {
       email: email.trim(),
       password: password.trim(),
       role,
-      branch,
-      yearClass,
-      section: section || undefined,
+      branch: isAdmin ? "admin" : branch,
+      yearClass: isAdmin ? "admin" : yearClass,
+      section: isAdmin ? undefined : section || undefined,
       about: about.trim() || undefined,
       createdAt: new Date().toISOString(),
     }
@@ -152,7 +163,15 @@ export default function SignupPage() {
                   value={role}
                   onValueChange={(value: StoredUser["role"]) => {
                     setRole(value)
+                    if (value === "admin") {
+                      setBranch("admin")
+                      setYearClass("admin")
+                      resetOptionalFields()
+                      return
+                    }
                     resetOptionalFields()
+                    if (branch === "admin") setBranch("cse")
+                    if (yearClass === "admin") setYearClass("first-year")
                   }}
                 >
                   <SelectTrigger className="w-full">
@@ -166,45 +185,49 @@ export default function SignupPage() {
                 </Select>
               </div>
 
-              <div className="space-y-2">
-                <Label>Branch</Label>
-                <Select value={branch} onValueChange={setBranch}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select branch" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="cse">CSE</SelectItem>
-                    <SelectItem value="it">IT</SelectItem>
-                    <SelectItem value="ece">ECE</SelectItem>
-                    <SelectItem value="mechanical">Mechanical</SelectItem>
-                    <SelectItem value="civil">Civil</SelectItem>
-                    <SelectItem value="ai-ml">AI/ML</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              {!isAdmin && (
+                <>
+                  <div className="space-y-2">
+                    <Label>Branch</Label>
+                    <Select value={branch} onValueChange={setBranch}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select branch" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="cse">CSE</SelectItem>
+                        <SelectItem value="it">IT</SelectItem>
+                        <SelectItem value="ece">ECE</SelectItem>
+                        <SelectItem value="mechanical">Mechanical</SelectItem>
+                        <SelectItem value="civil">Civil</SelectItem>
+                        <SelectItem value="ai-ml">AI/ML</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-              <div className="space-y-2">
-                <Label>Class</Label>
-                <Select
-                  value={yearClass}
-                  onValueChange={(value) => {
-                    setYearClass(value)
-                    resetOptionalFields()
-                  }}
-                >
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select class" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="first-year">First Year</SelectItem>
-                    <SelectItem value="second-year">Second Year</SelectItem>
-                    <SelectItem value="third-year">Third Year</SelectItem>
-                    <SelectItem value="btech">BTech</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+                  <div className="space-y-2">
+                    <Label>Class</Label>
+                    <Select
+                      value={yearClass}
+                      onValueChange={(value) => {
+                        setYearClass(value)
+                        resetOptionalFields()
+                      }}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select class" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="first-year">First Year</SelectItem>
+                        <SelectItem value="second-year">Second Year</SelectItem>
+                        <SelectItem value="third-year">Third Year</SelectItem>
+                        <SelectItem value="btech">BTech</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </>
+              )}
 
-              {yearClass === "second-year" && (
+              {!isAdmin && yearClass === "second-year" && (
                 <div className="space-y-2">
                   <Label>Section (Second Year)</Label>
                   <Select value={section} onValueChange={setSection}>
@@ -221,7 +244,7 @@ export default function SignupPage() {
                 </div>
               )}
 
-              {yearClass === "third-year" && (
+              {!isAdmin && yearClass === "third-year" && (
                 <div className="space-y-2">
                   <Label>Section (Third Year)</Label>
                   <Select value={section} onValueChange={setSection}>
