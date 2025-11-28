@@ -3,13 +3,17 @@
   "middleware": {
     "/": {
       "files": [
-        "server/edge/chunks/OneDrive_Desktop_Quiz_engine_QuizEngine_79cdd14a._.js",
-        "server/edge/chunks/[root-of-the-server]__fe5a917e._.js",
-        "server/edge/chunks/turbopack-OneDrive_Desktop_Quiz_engine_QuizEngine_edge-wrapper_098d78f8.js"
+        "server/edge/chunks/OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js",
+        "server/edge/chunks/[root-of-the-server]__938c4a14._.js",
+        "server/edge/chunks/turbopack-OneDrive_Desktop_Quiz_engine_QuizEngine_edge-wrapper_6618ced0.js"
       ],
       "name": "middleware",
       "page": "/",
       "matchers": [
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/student(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\\\.json)?[\\/#\\?]?$",
+          "originalSource": "/student/:path*"
+        },
         {
           "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/dashboard(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\\\.json)?[\\/#\\?]?$",
           "originalSource": "/dashboard/:path*"
@@ -24,9 +28,9 @@
       "env": {
         "__NEXT_BUILD_ID": "development",
         "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "lPmVI0VYPv6m7Gogs8nQa7fwY2q5MUYlJjh5TFVCWrg=",
-        "__NEXT_PREVIEW_MODE_ID": "6df2943bb57c1bfb782cfe2bb5fcb15c",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5374885a8a44725581c4f89f665cb3b128a757ea87c6d878a67c7548278a3601",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "f66c026e3aa4e64a3e59847330a86b4cac66dcce93fddac4e231f337a24a04c9"
+        "__NEXT_PREVIEW_MODE_ID": "41dcea5f6ae211e4a4a74cd1a7448a38",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "0dc5428dd1d1c13620fd984fbdb5eb0c92ecd7544f3056b05c665e05aeea1f2e",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "cab261f34a7c6f7ec8947f82b8851ee77994946ed4bbd1bf9b6668510d510199"
       }
     }
   },

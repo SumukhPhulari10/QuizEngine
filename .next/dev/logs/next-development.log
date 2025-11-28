@@ -1,221 +1,117 @@
-[00:00:02.245] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:02.512] Server  WARN     ⚠ Duplicate page detected. app\dashboard\teacher\page.jsx and app\dashboard\teacher\page.tsx resolve to /dashboard/teacher
-[00:00:02.513] Server  WARN     ⚠ Duplicate page detected. app\dashboard\teacher\page.jsx and app\dashboard\teacher\page.tsx resolve to /dashboard/teacher
-[00:00:02.514] Server  LOG      ✓ Ready in 1858ms
-[00:00:31.474] Server  LOG      ○ Compiling / ...
-[00:00:37.234] Server  WARN     ⚠ Cross origin request detected from 10.164.25.54 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:02.423] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:02.714] Server  LOG      ✓ Ready in 2s
+[00:00:32.263] Server  LOG      ○ Compiling / ...
+[00:00:38.837] Server  WARN     ⚠ Cross origin request detected from 10.248.101.54 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:37.351] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:37.475] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:37.475] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:37.475] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.164.25.54:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://10.164.25.54:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764246593699}
-[00:00:43.452] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:43.590] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:43.590] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
-[00:00:43.590] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.164.25.54:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://10.164.25.54:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764246599838}
-[00:00:52.082] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.164.25.54:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://10.164.25.54:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764246608322}
-[00:01:06.422] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.164.25.54:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://10.164.25.54:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764246622665}
-[00:01:13.410] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.164.25.54:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://10.164.25.54:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764246629651}
-[00:05:19.443] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.358] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:20.358] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:20.358] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:20.369] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.394] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.417] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.436] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.457] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.480] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.501] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.523] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.545] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.568] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.593] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.614] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.634] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.656] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.677] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.698] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.718] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.741] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.760] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.780] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.800] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.819] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.839] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.859] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.910] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.940] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.963] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:20.984] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:21.005] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:21.028] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:21.048] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:21.063] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:21.063] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:21.063] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:21.086] Server  ERROR    ⨯ ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:21.312] Browser ERROR   uncaughtError: Error: ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-
-
-[00:05:22.314] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:22.314] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:22.314] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:22.314] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
-[00:05:22.314] Browser ERROR   ./OneDrive/Desktop/Quiz_engine/QuizEngine/app
-An issue occurred while preparing your Next.js app
-Conflicting route and page at /dashboard: route at /dashboard/route and page at /dashboard/page
+[00:00:38.923] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:39.702] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:39.703] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:39.703] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://10.248.101.54:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764306876593}
+[00:00:45.579] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:45.715] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:45.715] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:00:45.715] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://10.248.101.54:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764306882618}
+[00:01:33.058] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:33.205] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:33.205] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:01:33.205] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://10.248.101.54:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764306930101}
+[00:01:54.674] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://10.248.101.54:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764306951537}
+[00:02:00.594] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://10.248.101.54:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764306957495}
+[00:03:01.236] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:01.374] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:03:01.374] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:03:01.374] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://10.248.101.54:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307018268}
+[00:03:01.792] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:01.923] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:03:01.924] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:03:01.924] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://10.248.101.54:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307018823}
+[00:03:05.086] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://10.248.101.54:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307021938}
+[00:03:07.107] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://10.248.101.54:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307024006}
+[00:03:08.157] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:08.319] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:03:08.319] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:03:08.319] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://10.248.101.54:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307025206}
+[00:03:13.644] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:13.772] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:03:13.772] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:03:13.772] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://10.248.101.54:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307030674}
+[00:03:20.279] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://10.248.101.54:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307037129}
+[00:04:37.545] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/login?registered=1&email=omsolanke17%40gmail.com color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://10.248.101.54:3000/login?registered=1&email=omsolanke17%40gmail.com","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307114438}
+[00:04:45.558] Server  ERROR   Error: Route "/" used `cookies().get`. `cookies()` returns a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at createCookiesAccessError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11861:34)
+    at logDedupedError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11619:25)
+    at Promise.get (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11828:13)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:44)
+    at Array.map (<anonymous>)
+    at readCookie (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:21)
+    at getRoleFromRequest (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:101:22)
+    at middleware (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:189:222)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:12830:26) {
+  
+}
+[00:04:45.564] Server  ERROR   Error: Route "/" used `cookies().get`. `cookies()` returns a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at createCookiesAccessError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11861:34)
+    at logDedupedError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11619:25)
+    at Promise.get (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11828:13)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:44)
+    at Array.map (<anonymous>)
+    at readCookie (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:21)
+    at getBranchFromRequest (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:107:32)
+    at middleware (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:190:226)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:12830:26) {
+  
+}
+[00:04:46.790] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://10.248.101.54:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307123689}
+[00:05:00.099] Server  ERROR   Error: Route "/" used `cookies().get`. `cookies()` returns a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at createCookiesAccessError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11861:34)
+    at logDedupedError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11619:25)
+    at Promise.get (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11828:13)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:44)
+    at Array.map (<anonymous>)
+    at readCookie (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:21)
+    at getRoleFromRequest (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:101:22)
+    at middleware (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:189:222)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:12830:26) {
+  
+}
+[00:05:00.102] Server  ERROR   Error: Route "/" used `cookies().get`. `cookies()` returns a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at createCookiesAccessError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11861:34)
+    at logDedupedError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11619:25)
+    at Promise.get (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11828:13)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:44)
+    at Array.map (<anonymous>)
+    at readCookie (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:21)
+    at getBranchFromRequest (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:107:32)
+    at middleware (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:190:226)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:12830:26) {
+  
+}
+[00:05:00.892] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/dashboard/admin color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/admin","o":"http://10.248.101.54:3000/dashboard/admin","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307137791}
+[00:05:09.915] Server  ERROR   Error: Route "/" used `cookies().get`. `cookies()` returns a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at createCookiesAccessError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11861:34)
+    at logDedupedError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11619:25)
+    at Promise.get (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11828:13)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:44)
+    at Array.map (<anonymous>)
+    at readCookie (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:21)
+    at getRoleFromRequest (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:101:22)
+    at middleware (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:189:222)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:12830:26) {
+  
+}
+[00:05:09.919] Server  ERROR   Error: Route "/" used `cookies().get`. `cookies()` returns a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at createCookiesAccessError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11861:34)
+    at logDedupedError (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11619:25)
+    at Promise.get (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:11828:13)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:44)
+    at Array.map (<anonymous>)
+    at readCookie (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:95:21)
+    at getBranchFromRequest (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:107:32)
+    at middleware (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\[root-of-the-server]__938c4a14._.js:190:226)
+    at <unknown> (C:\Users\Om\OneDrive\Desktop\Quiz_engine\QuizEngine\.next\dev\server\edge\chunks\OneDrive_Desktop_Quiz_engine_QuizEngine_cb776dc6._.js:12830:26) {
+  
+}
+[00:05:10.134] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://10.248.101.54:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307147022}
+[00:05:11.965] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/dashboard/admin color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/admin","o":"http://10.248.101.54:3000/dashboard/admin","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307148863}
+[00:05:13.784] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/signup color: rgb(120, 120, 120) color: inherit {"dp":"/signup","o":"http://10.248.101.54:3000/signup","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307150654}
+[00:05:16.104] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://10.248.101.54:3000/dashboard/admin color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/admin","o":"http://10.248.101.54:3000/dashboard/admin","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764307152991}

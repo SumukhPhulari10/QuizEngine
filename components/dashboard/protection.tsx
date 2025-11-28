@@ -11,7 +11,7 @@ export default function RoleGuard({
 }: {
   children: ReactNode;
   allowedRoles?: string[];
-  requiredBranch?: string;
+  requiredBranch?: string | string[];
 }) {
   const [user, setUser] = useState<any>(() => getActiveUser());
   const router = useRouter();
@@ -31,10 +31,14 @@ export default function RoleGuard({
       return;
     }
 
-    if (requiredBranch && u.branch !== requiredBranch) {
-      // Branch mismatch
-      router.replace(`/dashboard/student/${u.branch}`);
-      return;
+    if (requiredBranch) {
+      const requiredBranches = Array.isArray(requiredBranch) ? requiredBranch : [requiredBranch]
+      const normalized = requiredBranches.map((b) => b.toLowerCase())
+      if (!normalized.includes((u.branch || '').toLowerCase())) {
+        // Branch mismatch
+        router.replace(`/dashboard/student/${u.branch}`);
+        return;
+      }
     }
   }, [router, allowedRoles, requiredBranch, user]);
 
