@@ -19,7 +19,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { ActiveUser, StoredUser, getActiveUser, setActiveUser, getStoredUsers, upsertUser, clearActiveUser } from "@/lib/profile-storage"
 import db, { getAllUsers, getResultsByEmail, getTeachers, updateUser } from "@/lib/db"
 import { useToast } from "@/components/ui/use-toast"
- 
+
 
 export default function AdminDashboardPage() {
   const router = useRouter()

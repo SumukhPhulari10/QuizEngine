@@ -1,82 +1,122 @@
 "use client"
+
 import Link from "next/link"
-import { useRouter, useSearchParams } from "next/navigation"
-import { Suspense, useEffect, useMemo, useRef, useState } from "react"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Cpu, Eye, EyeOff, ShieldCheck } from "lucide-react"
-import { useToast } from "@/components/ui/use-toast"
-import { findUserByCredentials, setActiveUser } from "@/lib/profile-storage"
-import db from "@/lib/db"
+import { Cpu, Eye, EyeOff } from "lucide-react"
+import { supabase } from "@/lib/supabase/client"
 
-function LoginContent() {
+export default function LoginPage() {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const { toast } = useToast()
-  const prefilledEmail = useMemo(() => searchParams?.get("email") ?? "", [searchParams])
-  const [email, setEmail] = useState(prefilledEmail)
-  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
-  const formRef = useRef<HTMLFormElement | null>(null)
 
-  useEffect(() => {
-    if (searchParams?.get("registered")) {
-      toast({
-        title: "Signup successful",
-        description: "Please sign in to continue.",
-      })
-    }
-  }, [searchParams, toast])
+  const redirectByRole = async (userId: string) => {
+    let role: string | null = null
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (isLoading) return
-    setIsLoading(true)
+    // Try primary profiles table first
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", userId)
+      .maybeSingle()
 
-    if (!email || !password) {
-      toast({ title: "Missing fields", description: "Enter email and password to sign in.", variant: "destructive" })
-      setIsLoading(false)
-      return
+    if (profileError) {
+      console.error("Error fetching profile role:", profileError)
     }
 
-    const user = findUserByCredentials(email, password)
-
-    if (!user) {
-      toast({
-        title: "Invalid credentials",
-        description: "Double-check your email and password and try again.",
-        variant: "destructive",
-      })
-      setIsLoading(false)
-      return
+    if (profile?.role) {
+      role = profile.role
     }
 
-    const { password: _pw, ...profile } = user
-    setActiveUser({ ...profile, lastLogin: new Date().toISOString() })
+    // Fallback to user_branches if no role found in profiles
+    if (!role) {
+      const { data: userBranch, error: userBranchError } = await supabase
+        .from("user_branches")
+        .select("role")
+        .eq("user_id", userId)
+        .maybeSingle()
 
-    // For students: reset their personal results/progress on sign-in to provide
-    // a fresh start as requested. This clears any stored attempts for this user.
-    if (profile.role === "student") {
-      try {
-        db.clearResultsByEmail(profile.email)
-      } catch (err) {
-        // swallow — non-critical
+      if (userBranchError) {
+        console.error("Error fetching branch role:", userBranchError)
+      }
+
+      if (userBranch?.role) {
+        role = userBranch.role
       }
     }
 
-    toast({
-      title: "Welcome back",
-      description: `${profile.name} is signed in as ${profile.role}.`,
-    })
+    if (role === "admin") {
+      router.push("/dashboard/admin")
+      return
+    }
+    if (role === "teacher") {
+      router.push("/dashboard/teacher")
+      return
+    }
+    if (role === "student") {
+      router.push("/dashboard/student")
+      return
+    }
 
-    const destination = profile.role === "teacher" ? "/dashboard/teacher" : profile.role === "admin" ? "/dashboard/admin" : "/dashboard"
-    setTimeout(() => {
-      router.push(destination)
+    // Default fallback
+    router.push("/dashboard")
+  }
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setError("")
+    setIsLoading(true)
+
+    try {
+      const formData = new FormData(e.currentTarget)
+      const email = (formData.get("email") as string) ?? ""
+      const password = (formData.get("password") as string) ?? ""
+
+      console.log("Attempting login with email:", email)
+
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+
+      console.log("Login response:", { data, error })
+
+      if (error) {
+        console.error("Login error:", error)
+        setError(error.message)
+        setIsLoading(false)
+        return
+      }
+
+      if (!data.user) {
+        console.error("No user in response")
+        setError("Login failed - no user returned")
+        setIsLoading(false)
+        return
+      }
+
+      // Wait for session to be fully established
+      await new Promise(resolve => setTimeout(resolve, 200))
+      
+      // Refresh the session to ensure it's available to middleware
+      await supabase.auth.refreshSession()
+
+      console.log("Login success, redirecting based on role...")
+      await redirectByRole(data.user.id)
+    } catch (err: any) {
+      console.error("Login exception:", err)
+      setError(err.message || "Network error. Please check your connection and try again.")
       setIsLoading(false)
-    }, 400)
+      return
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -92,26 +132,24 @@ function LoginContent() {
           <span className="text-2xl font-bold text-foreground">QuizEngine</span>
         </Link>
 
-        <Card className="border-border shadow-2xl shadow-accent/10">
+        <Card className="border-border shadow-lg">
           <CardHeader className="space-y-1 text-center">
             <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
             <CardDescription>Sign in to your account to continue learning</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
+            {/* Error Message */}
+            {error && (
+              <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+                {error}
+              </div>
+            )}
+
             {/* Email/Password Form */}
-            <form ref={formRef} className="space-y-4" onSubmit={handleSubmit}>
+            <form className="space-y-4" onSubmit={handleLogin}>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="name@example.com"
-                    required
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    autoComplete="off"
-                  />
+                <Input id="email" name="email" type="email" placeholder="name@example.com" required />
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -121,40 +159,32 @@ function LoginContent() {
                   </Link>
                 </div>
                 <div className="relative">
-                  <Input
-                    id="password"
-                    name="password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Enter your password"
-                    required
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    autoComplete="off"
+                  <Input 
+                    id="password" 
+                    name="password" 
+                    type={showPassword ? "text" : "password"} 
+                    placeholder="Enter your password" 
+                    required 
+                    className="pr-10"
                   />
                   <button
                     type="button"
-                    className="absolute inset-y-0 right-2 flex items-center text-muted-foreground hover:text-foreground transition-colors"
-                    onClick={() => setShowPassword((prev) => !prev)}
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    {showPassword ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
                   </button>
                 </div>
               </div>
-              <Button
-                type="submit"
-                className="w-full"
-                size="lg"
-                disabled={isLoading}
-                onClick={() => formRef.current?.requestSubmit()}
-              >
-                {isLoading ? "Signing you in..." : "Sign In"}
+              <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
+                {isLoading ? "Signing In..." : "Sign In"}
               </Button>
             </form>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground rounded-md bg-muted/50 p-3">
-              <ShieldCheck className="w-4 h-4 text-accent" />
-              Secure by design — we only store data locally on your device.
-            </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <div className="text-sm text-center text-muted-foreground">
@@ -178,19 +208,5 @@ function LoginContent() {
         </p>
       </div>
     </div>
-  )
-}
-
-export default function LoginPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
-          Preparing secure sign-in...
-        </div>
-      }
-    >
-      <LoginContent />
-    </Suspense>
   )
 }
